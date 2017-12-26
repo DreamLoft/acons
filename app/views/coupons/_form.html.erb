@@ -1,0 +1,5 @@
+<%= bootstrap_form_for(@coupon) do |f| %>
+  <%= f.text_field :coupon_code %>
+  <%= f.select :coupon_status, ["Active","Used"], { label: "Select Coupon Status:" }, { class: "selectpicker" } %>
+  <%= f.submit "Save" ,class: 'btn btn-primary'  %>
+<% end %>

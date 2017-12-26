@@ -5,10 +5,45 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ACONS</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Rooms', rooms_path %></li>
+            <li><a href="#">Stock</a></li>
+            <li><a href="#">Payments</a></li>
+            <li><a href="#">Bookings</a></li>
+            <li><a href="#">Guests</a></li>
+            <li><%= link_to 'Coupons', coupons_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Developer</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
