@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226195624) do
+ActiveRecord::Schema.define(version: 20180102072958) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "customer_email"
+    t.string "customer_mobile"
+    t.date "booking_date"
+    t.integer "total_guests"
+    t.string "booking_status"
+    t.date "booked_from"
+    t.date "booked_till"
+    t.decimal "booking_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "coupons", force: :cascade do |t|
     t.text "coupon_code"
@@ -19,12 +33,56 @@ ActiveRecord::Schema.define(version: 20171226195624) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "guests", force: :cascade do |t|
+    t.string "name"
+    t.string "mobile"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.integer "guest_id"
+    t.datetime "check_in_time"
+    t.datetime "check_out_time"
+    t.integer "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_logs_on_booking_id"
+    t.index ["guest_id"], name: "index_logs_on_guest_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "booking_id"
+    t.decimal "amount_paid"
+    t.string "payment_method"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "room_name"
     t.string "room_type"
     t.string "room_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stock_items", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer "stock_item_id"
+    t.date "filling_date"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_item_id"], name: "index_stocks_on_stock_item_id"
   end
 
   create_table "users", force: :cascade do |t|

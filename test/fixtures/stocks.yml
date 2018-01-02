@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock_item: one
+  filling_date: 2018-01-02
+  quantity: 1
+
+two:
+  stock_item: two
+  filling_date: 2018-01-02
+  quantity: 1

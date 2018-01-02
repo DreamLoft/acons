@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  customer_email: MyString
+  customer_mobile: MyString
+  booking_date: 2018-01-02
+  total_guests: 1
+  booking_status: MyString
+  booked_from: 2018-01-02
+  booked_till: 2018-01-02
+  booking_amount: 9.99
+
+two:
+  customer_name: MyString
+  customer_email: MyString
+  customer_mobile: MyString
+  booking_date: 2018-01-02
+  total_guests: 1
+  booking_status: MyString
+  booked_from: 2018-01-02
+  booked_till: 2018-01-02
+  booking_amount: 9.99

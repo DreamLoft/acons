@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Guest:</strong>
+  <%= @log.guest %>
+</p>
+
+<p>
+  <strong>Check in time:</strong>
+  <%= @log.check_in_time %>
+</p>
+
+<p>
+  <strong>Check out time:</strong>
+  <%= @log.check_out_time %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @log.booking %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :logs
+  resources :bookings
+  resources :payments
+  resources :stocks
+  resources :stock_items
+  resources :guests
   devise_for :users
   root 'welcome#index'
 #  get 'welcome/index'

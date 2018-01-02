@@ -29,10 +29,13 @@
             <li class="active"><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Rooms', rooms_path %></li>
             <li><%= link_to 'Coupons', coupons_path %></li>
-            <li><a href="#">Stock</a></li>
-            <li><a href="#">Payments</a></li>
-            <li><a href="#">Bookings</a></li>
-            <li><a href="#">Guests</a></li>
+            <li><%= link_to 'Guests', guests_path %></li>
+            <li><%= link_to 'Stock Items', stock_items_path %></li>
+            <li><%= link_to 'Stock', stocks_path %></li>
+            <li><%= link_to 'Payments', payments_path %></li>
+            <li><%= link_to 'Logs', logs_path %></li>
+            <li><%= link_to 'bookings', bookings_path %></li>
+
 
             <% end %>
           </ul>
