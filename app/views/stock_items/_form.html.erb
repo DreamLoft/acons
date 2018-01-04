@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :stock_item_name %>
+    <%= form.text_field :name, id: :stock_item_name , class:'form-control'  %>
   </div>
 
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :stock_item_quantity %>
-  </div>
+    <%= form.number_field :quantity, id: :stock_item_quantity  , class:'form-control' %>
+  </div><br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit' , class:'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_with(model: payment, local: true) do |form| %>
+<!-- <%= form_with(model: payment, local: true) do |form| %>
   <% if payment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
@@ -24,4 +24,23 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+<% end %> -->
+
+<%= bootstrap_form_for(@payment) do |f| %>
+<% if payment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+    <ul>
+    <% payment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= f.text_field :booking_id ,type:"number" , class: 'form-control',  label: "Enter Booking ID" ,:required => true %>
+<%= f.text_field :amount_paid ,type:"number" , class: 'form-control',  label: "Amount Paid" ,:required => true %>
+<%= f.select :payment_method, ["Cash Payment","By Debit Card", "Net Banking","Other"], { label: "Enter Payment Method:" }, { class: "selectpicker" } %>
+
+  <%= f.submit "Save" ,class: 'btn btn-primary'  %>
 <% end %>

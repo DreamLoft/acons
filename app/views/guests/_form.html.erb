@@ -13,20 +13,20 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :guest_name %>
+    <%= form.text_field :name, id: :guest_name, class:'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :mobile %>
-    <%= form.text_field :mobile, id: :guest_mobile %>
+    <%= form.text_field :mobile, id: :guest_mobile , class:'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :guest_email %>
-  </div>
+    <%= form.text_field :email, id: :guest_email , class:'form-control' %>
+  </div><br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit' , class:'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_with(model: booking, local: true) do |form| %>
+<!-- <%= form_with(model: booking, local: true) do |form| %>
   <% if booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -59,4 +59,32 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+<% end %> -->
+
+
+
+
+<%= bootstrap_form_for(@booking) do |f| %>
+<% if booking.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+    <ul>
+    <% booking.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= f.text_field :customer_name ,type:"text" ,  label: "Customer Name" ,:required => true %>
+<%= f.text_field :customer_email ,type:"email" ,  label: "Customer Email" ,:required => true %>
+<%= f.text_field :customer_mobile ,type:"tel" ,  label: "Customer Contact Number" ,:required => true %>
+<%= f.date_select :booking_date , leble: "Select Booking Date", :required => true %>
+<%= f.text_field :total_guests ,type:"number" ,  label: "Total Guests" ,:required => true %>
+<%= f.date_select :booked_from , leble: "Booked From (Expected Checkin Date) ", :required => true %>
+<%= f.date_select :booked_till , leble: "Booked Till (Expected Checkout Date) ", :required => true %>
+<%= f.text_field :booking_amount ,type:"number" ,  label: "Booking Amount" ,:required => true %>
+<%= f.text_field :booking_status ,type:"text" ,  label: "Booking Status" ,:required => true %>
+  <%= f.submit "Save" ,class: 'btn btn-primary'  %>
 <% end %>
