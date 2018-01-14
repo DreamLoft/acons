@@ -1,36 +1,4 @@
-<!-- <%= form_with(model: stock, local: true) do |form| %>
-  <% if stock.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
-
-      <ul>
-      <% stock.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :stock_item_id %>
-    <%= form.text_field :stock_item_id, id: :stock_stock_item_id, class: 'form-control' %>
-  </div><br>
-
-  <div class="group-item">
-    <%= form.label :filling_date %>
-    <%= form.date_select :filling_date, id: :stock_filling_date,class: 'form-control'  %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :stock_quantity, class: 'form-control' %>
-  </div><br>
-
-  <div class="actions">
-    <%= form.submit "Submit", class: 'btn btn-primary' %>
-  </div>
-<% end %> -->
-
+<% if (@stock_items ) %>
 <%= bootstrap_form_for(@stock) do |f| %>
 <% if stock.errors.any? %>
   <div id="error_explanation">
@@ -53,4 +21,7 @@
   <%= f.text_field :quantity ,type:"number" , class: 'form-control',  label: "Quantity" ,:required => true %>
 
   <%= f.submit "Save" ,class: 'btn btn-primary'  %>
+<% end %>
+<% else %>
+<h3>You need to add stock items before filling in stock .</h3>
 <% end %>

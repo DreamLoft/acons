@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102072958) do
+ActiveRecord::Schema.define(version: 20180114134542) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "customer_name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180102072958) do
     t.text "coupon_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -58,7 +59,30 @@ ActiveRecord::Schema.define(version: 20180102072958) do
     t.string "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "payment_date"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
+  create_table "room_bookings", id: false, force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_room_bookings_on_booking_id"
+    t.index ["room_id"], name: "index_room_bookings_on_room_id"
+  end
+
+  create_table "room_services", force: :cascade do |t|
+    t.integer "stock_item_id"
+    t.integer "booking_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price"
+    t.integer "quantity"
+    t.index ["booking_id"], name: "index_room_services_on_booking_id"
+    t.index ["room_id"], name: "index_room_services_on_room_id"
+    t.index ["stock_item_id"], name: "index_room_services_on_stock_item_id"
   end
 
   create_table "rooms", force: :cascade do |t|

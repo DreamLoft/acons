@@ -1,0 +1,25 @@
+<% if (@stock_items and @rooms ) %>
+  <%= form_with scope: :room_service,url: {action: "create"} , local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :stock_item_id, "Select Stock Item" %>
+      <%= select_tag(:stock_item_id, options_for_select(@stock_items.map {|s| [s.name, s.id] }), { :class => 'form-control'}) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, "Enter Price" %>
+        <%= f.text_field :price ,type:"number" , class:"form-control" ,:required => true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :quantity, "Enter Qunatity" %>
+        <%= f.text_field :quantity ,type:"number" , class:"form-control" ,:required => true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :room_id, "Select Room" %>
+      <%= select_tag(:room_id, options_for_select(@rooms.map {|r| [r.room_name, r.id] }), { :class => 'form-control'}) %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "Save" ,class: 'btn btn-primary'  %>
+    </div>
+  <% end %>
+<% else %>
+  <h4>Please Add Stock in Items before Allocating </h4>
+<% end %>

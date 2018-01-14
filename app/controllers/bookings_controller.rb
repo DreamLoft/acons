@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
@@ -10,24 +11,37 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+    @payments= @booking.payments
+    @rooms_booked= @booking.rooms
+    @room_services= @booking.room_services
+    #render json: @room_services
   end
 
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @available_rooms= Room.where(room_status: "Available")
   end
 
   # GET /bookings/1/edit
   def edit
+    @available_rooms= Room.where(room_status: "Available")
   end
 
   # POST /bookings
   # POST /bookings.json
   def create
+  #    render json: params[:booking][:rooms]
     @booking = Booking.new(booking_params)
-
     respond_to do |format|
       if @booking.save
+        rs= params[:booking][:rooms]
+        rs.each do|room|
+          @room_booking= RoomBooking.new
+          @room_booking.room_id= room
+          @room_booking.booking_id= @booking.id
+          @room_booking.save
+        end
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
@@ -35,6 +49,7 @@ class BookingsController < ApplicationController
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /bookings/1
@@ -60,6 +75,7 @@ class BookingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

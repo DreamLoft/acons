@@ -2,13 +2,34 @@
 
 <p>
   <strong>Booking:</strong>
-  <%= @payment.booking %>
+  <%= @payment.booking_id %>
 </p>
 
 <p>
   <strong>Amount paid:</strong>
   <%= @payment.amount_paid %>
 </p>
+
+<p>
+  <strong>Payment Date:</strong>
+  <%= @payment.created_at %>
+</p>
+<hr>
+<h3>Payment Timeline </h3>
+<br>
+<% @all_payments.each do |paymt| %>
+<p>
+  <strong>Amount paid:</strong>
+  <%= paymt.amount_paid %>
+</p>
+
+<p>
+  <strong>Payment Date:</strong>
+  <%= paymt.created_at %>
+</p>
+<hr>
+<% end %>
+
 
 <%= link_to 'Edit', edit_payment_path(@payment) %> |
 <%= link_to 'Back', payments_path %>

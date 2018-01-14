@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stock item:</strong>
+  <%= @room_service.stock_item.name %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @room_service.booking_id %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @room_service.room.room_name %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @room_service.price %>
+</p>
+
+<%= link_to 'Edit', edit_room_service_path(@room_service) %> |
+<%= link_to 'Back', room_services_path %>

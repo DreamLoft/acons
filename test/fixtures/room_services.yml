@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock_item: one
+  booking: one
+  room: one
+
+two:
+  stock_item: two
+  booking: two
+  room: two

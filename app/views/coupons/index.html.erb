@@ -4,6 +4,7 @@
   <tr>
     <th>Coupon Code </th>
     <th>Coupon Status </th>
+    <th>Description </th>
     <th ></th>
     <th></th>
   </tr>
@@ -11,6 +12,7 @@
     <tr>
       <td><%= coupon.coupon_code %></td>
       <td><%= coupon.coupon_status %></td>
+      <td><%= coupon.description %></td>
       <td><%= link_to 'Show', coupon_path(coupon) %></td>
       <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
     </tr>

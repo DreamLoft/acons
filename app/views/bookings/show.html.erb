@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Customer Info</h3>
 <p>
   <strong>Customer name:</strong>
   <%= @booking.customer_name %>
@@ -14,6 +15,8 @@
   <strong>Customer mobile:</strong>
   <%= @booking.customer_mobile %>
 </p>
+<hr>
+<h3>Booking Info </h3>
 
 <p>
   <strong>Booking date:</strong>
@@ -44,6 +47,65 @@
   <strong>Booking amount:</strong>
   <%= @booking.booking_amount %>
 </p>
+<hr>
+<h3>Rooms Booked</h3>
+<ol>
+  <% @rooms_booked.each do |b| %>
+  <li>
+    <%= b.room_name %> | <%= b.room_type %>
+  </li>
+  <% end %>
+</ol>
+<hr>
+<h3>Room Services</h3>
+<ol>
+<% @room_services.each do |rs| %>
+  <li>
+    <p>
+      <strong>Item:</strong>
+      <%= StockItem.find(rs.stock_item_id).name %>
+    </p>
+    <p>
+      <strong>Room :</strong>
+      <%= Room.find(rs.room_id).room_name %>
+    </p>
+    <p>
+      <strong>Quantity :</strong>
+      <%= rs.quantity %>
+    </p>
 
+    <p>
+      <strong>Price :</strong>
+      <%= rs.price %>
+    </p>
+
+  </li>
+<% end %>
+</ol>
+<hr>
+<h3>Payments</h3>
+<ol>
+<% @payments.each do |payment|%>
+<li>
+<p>
+  <strong>Payment Date:</strong>
+  <%= payment.payment_date %>
+</p>
+<p>
+  <strong>Payment amount:</strong>
+  <%= payment.amount_paid %>
+</p>
+<p>
+  <strong>Payment Method:</strong>
+  <%= payment.payment_method %>
+</p>
+</li>
+<% end %>
+</ol>
+<hr>
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<%= link_to 'Back', bookings_path %> |
+<%= link_to 'Room Services', booking_room_services_path(@booking.id) %>
+<br>
+<br>
+<br>

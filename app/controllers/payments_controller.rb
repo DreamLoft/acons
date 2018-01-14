@@ -4,12 +4,21 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
   def index
+    if (params[:start_date] or params[:end_date])
+      @payments = Payment.where("payment_date BETWEEN  ? AND ? ", params[:start_date], params[:end_date])
+#      render json: @payments
+    else
     @payments = Payment.all
+    end
+
+    #
   end
 
   # GET /payments/1
   # GET /payments/1.json
   def show
+    booking_id= Booking.find(@payment.booking_id)
+    @all_payments= Payment.where(booking_id: booking_id)
   end
 
   # GET /payments/new
@@ -69,6 +78,6 @@ class PaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:booking_id, :amount_paid)
+      params.require(:payment).permit(:booking_id, :amount_paid, :payment_date)
     end
 end
