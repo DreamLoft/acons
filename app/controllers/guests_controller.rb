@@ -4,12 +4,19 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
-    @guests = Guest.all
+    if params[:guest_name]
+      @guests= Guest.where(:name=> params[:guest_name] )
+    elsif params[:guest_mobile_number]
+      @guests= Guest.where(:mobile=> params[:guest_mobile_number] )
+    else
+      @guests = Guest.all
+    end
   end
 
   # GET /guests/1
   # GET /guests/1.json
   def show
+    @bookings= Booking.where(:customer_mobile=> @guest.mobile)
   end
 
   # GET /guests/new

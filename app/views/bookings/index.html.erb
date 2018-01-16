@@ -1,20 +1,41 @@
 
 <%= link_to 'New Booking', new_booking_path, class: 'btn btn-primary' %>
+<hr>
+<div>
+  <%=  bootstrap_form_tag  url: bookings_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-lg-5">
+
+      Start Date : <input type="date" name= "start_date"  class="form-control">
+    </div>
+    <div class="col-lg-5">
+      End Date : <input type="date" name= "end_date"  class="form-control">
+    </div>
+    <div class="col-lg-2">
+      <br>
+        <%= f.submit "Search Payments", class: 'btn btn-primary' %>
+    </div>
+
+  </div>
+  <% end %>
+</div>
+
+<hr>
 <h1>Bookings</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Booking ID</th>
       <th>Customer name</th>
       <th>Booking date</th>
       <th>Total guests</th>
-      <th>Booking status</th>
       <th>Booked from</th>
       <th>Booked till</th>
       <th>Booking amount</th>
       <th>Room Service Charge</th>
-      <th>Amount Paid</th>
+      <th>Paid Amount</th>
+      <th>Remaining Amount</th>
+      <th>Total Earned</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,15 +43,15 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.id %></td>
         <td><%= booking.customer_name %></td>
         <td><%= booking.booking_date %></td>
         <td><%= booking.total_guests %></td>
-        <td><%= booking.booking_status %></td>
         <td><%= booking.booked_from %></td>
         <td><%= booking.booked_till %></td>
         <td><%= booking.booking_amount %></td>
         <td><%= get_room_service_amount(booking.id) %></td>
+        <td><%= booking.paid_amount %></td>
+        <td><%= (booking.booking_amount + get_room_service_amount(booking.id)) - booking.paid_amount.to_i  %></td>
         <td><%= amount_paid(booking.id) %></td>
         <td><%= link_to 'Show', booking %></td>
 

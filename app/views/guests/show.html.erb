@@ -14,6 +14,36 @@
   <strong>Email:</strong>
   <%= @guest.email %>
 </p>
+<hr>
+<h3>Bookings</h3>
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>
+    <p>
+      <strong>Booking Date :</strong>
+      <%= booking.booking_date %>
+    </p>
+    <p>
+      <strong>Booked From:</strong>
+      <%= booking.booked_from %>
+    </p>
+    <p>
+      <strong>Booked Till:</strong>
+      <%= booking.booked_till %>
+    </p>
+    <p>
+      <strong>Booking Amount:</strong>
+      <%= booking.booking_amount %>
+    </p>
+    <p>
+      <strong>Paid Amount:</strong>
+      <%= booking.paid_amount %>
+    </p>
 
+  </li>
+  <% end %>
+</ul>
+<hr>
 <%= link_to 'Edit', edit_guest_path(@guest) %> |
-<%= link_to 'Back', guests_path %>
+<%= link_to 'Back', guests_path %> |
+<%= link_to 'New Booking', new_booking_path(:guest_id=>@guest.id) , class: "btn btn-primary" %>

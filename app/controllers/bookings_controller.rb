@@ -5,7 +5,12 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
+    if (params[:start_date] or params[:end_date])
+      @bookings = Booking.where("booked_from BETWEEN  ? AND ? ", params[:start_date], params[:end_date])
+#      render json: @payments
+    else
     @bookings = Booking.all
+    end
   end
 
   # GET /bookings/1
@@ -85,6 +90,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:customer_name, :customer_email, :customer_mobile, :booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount)
+      params.require(:booking).permit(:customer_name, :customer_email, :customer_mobile, :booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount)
     end
 end

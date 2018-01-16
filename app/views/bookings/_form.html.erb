@@ -11,16 +11,17 @@
   </div>
 <% end %>
 
-  <%= f.text_field :customer_name ,type:"text" ,  label: "Customer Name" ,:required => true %>
-  <%= f.text_field :customer_email ,type:"email" ,  label: "Customer Email" ,:required => true %>
-  <%= f.text_field :customer_mobile ,type:"tel" ,  label: "Customer Contact Number" ,:required => true %>
+  <%= f.text_field :customer_name ,type:"text"  ,  label: "Customer Name" ,:required => true %>
+  <%= f.text_field :customer_email ,type:"email" , label: "Customer Email" ,:required => true %>
+  <%= f.text_field :customer_mobile ,type:"tel"   ,label: "Customer Contact Number" ,:required => true %>
   <%= f.date_select :booking_date , leble: "Select Booking Date", :required => true %>
   <%= f.text_field :total_guests ,type:"number" ,  label: "Total Guests" ,:required => true %>
   <%= f.date_select :booked_from , leble: "Booked From (Expected Checkin Date) ", :required => true %>
   <%= f.date_select :booked_till , leble: "Booked Till (Expected Checkout Date) ", :required => true %>
   <%= f.text_field :booking_amount ,type:"number" ,  label: "Booking Amount" ,:required => true %>
-  <%= f.select :booking_status, ["Query","Confirmed","Expired"], { label: "Select booking Status:" }, { class: "selectpicker" } %>
-  <label>Select Rooms : <small>No Selection needed if you are editing a booking.</small></label>  
+  <%= f.text_field :paid_amount ,type:"number" ,  label: "Paid Amount" ,:required => true %>
+  <%= f.select :booking_status, ["Confirmed","Expired"], { label: "Select booking Status:" }, { class: "selectpicker" } %>
+  <label>Select Rooms : <small>No Selection needed if you are editing a booking.</small></label>
   <select name="booking[rooms][]" multiple=true class="form-control">
     <%= @available_rooms.each do |room| %>
       <option value="<%= room.id %>"><%= room.room_name %></option>

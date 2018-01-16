@@ -15,7 +15,7 @@ class Booking < ApplicationRecord
     create_guest(booking)
     @payment= Payment.new
     @payment.booking_id= booking.id
-    @payment.amount_paid= booking.booking_amount
+    @payment.amount_paid= booking.paid_amount
     @payment.payment_method = "On Booking"
     @payment.payment_date= booking.booking_date
     @payment.save

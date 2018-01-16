@@ -1,5 +1,38 @@
-
 <%= link_to 'Add New Guest', new_guest_path, class: 'btn btn-primary' %><br><br>
+<hr>
+<div>
+  <div class="row">
+    <div class="col-lg-10">
+      <%=  bootstrap_form_tag  url: guests_path, method: :get do |f| %>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <input type="text" name= "guest_name" placeholder= "Enter Guest name you want to search here"  class="form-control"> <br>
+        <%= f.submit "Search" %>
+      </span>
+      </div>
+      <% end %>
+    </div>
+  </div><br>
+<div class="row">
+    <div class="col-lg-10">
+      <%=  bootstrap_form_tag  url: guests_path, method: :get do |f| %>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <input type="tel" name= "guest_mobile_number" placeholder= "Enter Guest Mobile No. you want to search here"  class="form-control"> 
+        <%= f.submit "Search" %>
+      </span>
+      </div>
+      <% end %>
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+<hr>
 
 <table class="table table-hover">
   <thead>
