@@ -84,24 +84,26 @@
 </ol>
 <hr>
 <h3>Payments</h3>
-<ol>
-<% @payments.each do |payment|%>
-<li>
 <p>
-  <strong>Payment Date:</strong>
-  <%= payment.payment_date %>
+  <strong>Booking Amount :</strong>
+  <%= @booking.booking_amount %>
 </p>
 <p>
-  <strong>Payment amount:</strong>
-  <%= payment.amount_paid %>
+  <strong>Paid Amount :</strong>
+  <%= @booking.paid_amount %>
 </p>
 <p>
-  <strong>Payment Method:</strong>
-  <%= payment.payment_method %>
+  <strong>Room Service Charges :</strong>
+  <%= get_room_service_amount(@booking.id) %>
 </p>
-</li>
-<% end %>
-</ol>
+<p>
+  <strong>Remaining Amount :</strong>
+  <%= (@booking.booking_amount + get_room_service_amount(@booking.id)) - @booking.paid_amount.to_i %>
+</p>
+<p>
+  <strong>Total Earned :</strong>
+  <%= @booking.booking_amount + get_room_service_amount(@booking.id) %>
+</p>
 <hr>
 
 <hr>

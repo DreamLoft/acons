@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
-    @payments= @booking.payments
+    #@payments= @booking.payments
     @rooms_booked= @booking.rooms
     @room_services= @booking.room_services
     #render json: @room_services

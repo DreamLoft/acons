@@ -11,13 +11,13 @@ class Booking < ApplicationRecord
       g.save
     end
   end
-  after_save do |booking|
-    create_guest(booking)
-    @payment= Payment.new
-    @payment.booking_id= booking.id
-    @payment.amount_paid= booking.paid_amount
-    @payment.payment_method = "On Booking"
-    @payment.payment_date= booking.booking_date
-    @payment.save
-  end
+   after_save do |booking|
+     create_guest(booking)
+  #   @payment= Payment.new
+  #   @payment.booking_id= booking.id
+  #   @payment.amount_paid= booking.paid_amount
+  #   @payment.payment_method = "On Booking"
+  #   @payment.payment_date= booking.booking_date
+  #   @payment.save
+   end
 end
