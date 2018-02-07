@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Construction Payments</h1>
+
+<table class="table table-hover" >
+  <thead>
+    <tr>
+      <th>Payee name</th>
+      <th>Payee account</th>
+      <th>Amount paid</th>
+      <th>Payment date</th>
+      <th>Payment mode</th>
+      <th>Payemnt category</th>
+      <th>Project</th>
+      <th>Payment info</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @construction_payments.each do |construction_payment| %>
+      <tr>
+        <td><%= construction_payment.payee_name %></td>
+        <td><%= construction_payment.payee_account %></td>
+        <td><%= construction_payment.amount_paid %></td>
+        <td><%= construction_payment.payment_date %></td>
+        <td><%= construction_payment.payment_mode %></td>
+        <td><%= construction_payment.payemnt_category %></td>
+        <td><%= construction_payment.project %></td>
+        <td><%= construction_payment.payment_info %></td>
+        <td><%= link_to 'Show', construction_payment %></td>
+        <td><%= link_to 'Edit', edit_construction_payment_path(construction_payment) %></td>
+        <td><%= link_to 'Destroy', construction_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Construction Payment', new_construction_payment_path, class:'btn btn-primary' %>

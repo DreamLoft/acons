@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Apartment name:</strong>
+  <%= @apartment.apartment_name %>
+</p>
+
+<p>
+  <strong>Carpet area:</strong>
+  <%= @apartment.carpet_area %>
+</p>
+
+<p>
+  <strong>Build up:</strong>
+  <%= @apartment.build_up %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @apartment.project %>
+</p>
+
+<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
+<%= link_to 'Back', apartments_path %>

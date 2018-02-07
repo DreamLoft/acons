@@ -1,0 +1,2 @@
+class OfficeCustomer < ApplicationRecord
+end

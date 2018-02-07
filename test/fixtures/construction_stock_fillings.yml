@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  construction_stock: one
+  quantity: 1
+  filling_date: 2018-01-31
+  accepted_by: MyString
+  filling_location: MyString
+
+two:
+  construction_stock: two
+  quantity: 1
+  filling_date: 2018-01-31
+  accepted_by: MyString
+  filling_location: MyString

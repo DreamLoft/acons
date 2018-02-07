@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Payee name:</strong>
+  <%= @construction_payment.payee_name %>
+</p>
+
+<p>
+  <strong>Payee account:</strong>
+  <%= @construction_payment.payee_account %>
+</p>
+
+<p>
+  <strong>Amount paid:</strong>
+  <%= @construction_payment.amount_paid %>
+</p>
+
+<p>
+  <strong>Payment date:</strong>
+  <%= @construction_payment.payment_date %>
+</p>
+
+<p>
+  <strong>Payment mode:</strong>
+  <%= @construction_payment.payment_mode %>
+</p>
+
+<p>
+  <strong>Payemnt category:</strong>
+  <%= @construction_payment.payemnt_category %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @construction_payment.project %>
+</p>
+
+<p>
+  <strong>Payment info:</strong>
+  <%= @construction_payment.payment_info %>
+</p>
+
+<%= link_to 'Edit', edit_construction_payment_path(@construction_payment) %> |
+<%= link_to 'Back', construction_payments_path %>

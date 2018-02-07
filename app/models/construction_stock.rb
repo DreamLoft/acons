@@ -1,0 +1,2 @@
+class ConstructionStock < ApplicationRecord
+end

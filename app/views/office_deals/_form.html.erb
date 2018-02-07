@@ -1,0 +1,72 @@
+<%= form_with(model: office_deal, local: true) do |form| %>
+  <% if office_deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(office_deal.errors.count, "error") %> prohibited this office_deal from being saved:</h2>
+
+      <ul>
+      <% office_deal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :office_customer_id %>
+    <%= form.text_field :office_customer_id, id: :office_deal_office_customer_id, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apartment_id %>
+    <%= form.text_field :apartment_id, id: :office_deal_apartment_id, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :base_price %>
+    <%= form.number_field :base_price, id: :office_deal_base_price, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stamp_duty %>
+    <%= form.number_field :stamp_duty, id: :office_deal_stamp_duty, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :registration_charges %>
+    <%= form.number_field :registration_charges, id: :office_deal_registration_charges, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_charges %>
+    <%= form.number_field :other_charges, id: :office_deal_other_charges, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :maintenance_charges %>
+    <%= form.number_field :maintenance_charges, id: :office_deal_maintenance_charges, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parking_charges %>
+    <%= form.number_field :parking_charges, id: :office_deal_parking_charges, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :developement_charges %>
+    <%= form.number_field :developement_charges, id: :office_deal_developement_charges, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :club_membership_charges %>
+    <%= form.number_field :club_membership_charges, id: :office_deal_club_membership_charges, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :furniture_charges %>
+    <%= form.number_field :furniture_charges, id: :office_deal_furniture_charges, class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Save', :class=> 'btn btn-primary'  %>
+  </div>
+<% end %>

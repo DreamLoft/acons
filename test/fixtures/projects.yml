@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_name: MyString
+  number_of_buildings: 1
+  number_of_wings: 1
+  number_of_apartments: 1
+
+two:
+  project_name: MyString
+  number_of_buildings: 1
+  number_of_wings: 1
+  number_of_apartments: 1

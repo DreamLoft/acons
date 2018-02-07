@@ -1,0 +1,2 @@
+module ConstructionStockIssuesHelper
+end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Apartment Payments</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Office deal</th>
+      <th>Amount paid</th>
+      <th>Payment date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apartment_payments.each do |apartment_payment| %>
+      <tr>
+        <td><%= apartment_payment.office_deal %></td>
+        <td><%= apartment_payment.amount_paid %></td>
+        <td><%= apartment_payment.payment_date %></td>
+        <td><%= link_to 'Show', apartment_payment %></td>
+        <td><%= link_to 'Edit', edit_apartment_payment_path(apartment_payment) %></td>
+        <td><%= link_to 'Destroy', apartment_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Apartment Payment', new_apartment_payment_path, class: 'btn btn-primary' %>

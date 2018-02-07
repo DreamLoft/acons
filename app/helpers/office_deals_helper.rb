@@ -1,0 +1,2 @@
+module OfficeDealsHelper
+end

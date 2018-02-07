@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Office customer:</strong>
+  <%= @office_deal.office_customer %>
+</p>
+
+<p>
+  <strong>Apartment:</strong>
+  <%= @office_deal.apartment %>
+</p>
+
+<p>
+  <strong>Base price:</strong>
+  <%= @office_deal.base_price %>
+</p>
+
+<p>
+  <strong>Stamp duty:</strong>
+  <%= @office_deal.stamp_duty %>
+</p>
+
+<p>
+  <strong>Registration charges:</strong>
+  <%= @office_deal.registration_charges %>
+</p>
+
+<p>
+  <strong>Other charges:</strong>
+  <%= @office_deal.other_charges %>
+</p>
+
+<p>
+  <strong>Maintenance charges:</strong>
+  <%= @office_deal.maintenance_charges %>
+</p>
+
+<p>
+  <strong>Parking charges:</strong>
+  <%= @office_deal.parking_charges %>
+</p>
+
+<p>
+  <strong>Developement charges:</strong>
+  <%= @office_deal.developement_charges %>
+</p>
+
+<p>
+  <strong>Club membership charges:</strong>
+  <%= @office_deal.club_membership_charges %>
+</p>
+
+<p>
+  <strong>Furniture charges:</strong>
+  <%= @office_deal.furniture_charges %>
+</p>
+
+<%= link_to 'Edit', edit_office_deal_path(@office_deal) %> |
+<%= link_to 'Back', office_deals_path %>

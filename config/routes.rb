@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :construction_stock_issues
+  resources :construction_stock_fillings
+  resources :construction_stocks
+  resources :construction_payments
+  resources :apartment_payments
+  resources :office_deals
+  resources :office_customers
+  resources :apartments
+  resources :projects
   devise_for :users
   root 'welcome#index'
 #  get 'welcome/index'

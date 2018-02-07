@@ -1,0 +1,57 @@
+<%= form_with(model: construction_payment, local: true) do |form| %>
+  <% if construction_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(construction_payment.errors.count, "error") %> prohibited this construction_payment from being saved:</h2>
+
+      <ul>
+      <% construction_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :payee_name %>
+    <%= form.text_field :payee_name, id: :construction_payment_payee_name, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payee_account %>
+    <%= form.text_field :payee_account, id: :construction_payment_payee_account, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_paid %>
+    <%= form.number_field :amount_paid, id: :construction_payment_amount_paid, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_date %>
+    <%= form.date_select :payment_date, id: :construction_payment_payment_date, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_mode %>
+    <%= form.text_field :payment_mode, id: :construction_payment_payment_mode, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payemnt_category %>
+    <%= form.text_field :payemnt_category, id: :construction_payment_payemnt_category, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id, id: :construction_payment_project_id, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_info %>
+    <%= form.text_area :payment_info, id: :construction_payment_payment_info, class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Save', :class=>'btn btn-primary' %>
+  </div>
+<% end %>

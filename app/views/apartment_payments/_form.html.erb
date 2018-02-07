@@ -1,0 +1,32 @@
+<%= form_with(model: apartment_payment, local: true) do |form| %>
+  <% if apartment_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(apartment_payment.errors.count, "error") %> prohibited this apartment_payment from being saved:</h2>
+
+      <ul>
+      <% apartment_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :office_deal_id %>
+    <%= form.text_field :office_deal_id, id: :apartment_payment_office_deal_id, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_paid %>
+    <%= form.number_field :amount_paid, id: :apartment_payment_amount_paid, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_date %>
+    <%= form.date_select :payment_date, id: :apartment_payment_payment_date, class:'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class:'btn btn-primary' %>
+  </div>
+<% end %>

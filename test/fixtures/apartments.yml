@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apartment_name: MyString
+  carpet_area: MyString
+  build_up: MyString
+  project: one
+
+two:
+  apartment_name: MyString
+  carpet_area: MyString
+  build_up: MyString
+  project: two

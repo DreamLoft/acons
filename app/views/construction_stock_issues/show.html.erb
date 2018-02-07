@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Construction stock:</strong>
+  <%= @construction_stock_issue.construction_stock %>
+</p>
+
+<p>
+  <strong>Quanity:</strong>
+  <%= @construction_stock_issue.quanity %>
+</p>
+
+<p>
+  <strong>Issue date:</strong>
+  <%= @construction_stock_issue.issue_date %>
+</p>
+
+<p>
+  <strong>Issued to:</strong>
+  <%= @construction_stock_issue.issued_to %>
+</p>
+
+<%= link_to 'Edit', edit_construction_stock_issue_path(@construction_stock_issue) %> |
+<%= link_to 'Back', construction_stock_issues_path %>

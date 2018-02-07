@@ -1,0 +1,72 @@
+<%= form_with(model: office_customer, local: true) do |form| %>
+  <% if office_customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(office_customer.errors.count, "error") %> prohibited this office_customer from being saved:</h2>
+
+      <ul>
+      <% office_customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :office_customer_name, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :office_customer_phone, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :office_customer_email, class:'form-control' %>
+  </div>
+
+  <div class="field ">
+    <%= form.label :date_of_enquiry %>
+    <%= form.date_select :date_of_enquiry, id: :office_customer_date_of_enquiry, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :from_where %>
+    <%= form.text_field :from_where, id: :office_customer_from_where , class:'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= form.label :looking_for %>
+    <%= form.text_field :looking_for, id: :office_customer_looking_for, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :budget %>
+    <%= form.number_field :budget, id: :office_customer_budget, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :broker %>
+    <%= form.text_field :broker, id: :office_customer_broker , class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :office_customer_status, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments, id: :office_customer_comments, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= form.text_field :source, id: :office_customer_source, class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Save', :class=>'btn btn-primary' %>
+  </div>
+<% end %>

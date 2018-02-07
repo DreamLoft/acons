@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Construction stock:</strong>
+  <%= @construction_stock_filling.construction_stock %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @construction_stock_filling.quantity %>
+</p>
+
+<p>
+  <strong>Filling date:</strong>
+  <%= @construction_stock_filling.filling_date %>
+</p>
+
+<p>
+  <strong>Accepted by:</strong>
+  <%= @construction_stock_filling.accepted_by %>
+</p>
+
+<p>
+  <strong>Filling location:</strong>
+  <%= @construction_stock_filling.filling_location %>
+</p>
+
+<%= link_to 'Edit', edit_construction_stock_filling_path(@construction_stock_filling) %> |
+<%= link_to 'Back', construction_stock_fillings_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: construction_stock, local: true) do |form| %>
+  <% if construction_stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(construction_stock.errors.count, "error") %> prohibited this construction_stock from being saved:</h2>
+
+      <ul>
+      <% construction_stock.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :item_name %>
+    <%= form.text_field :item_name, id: :construction_stock_item_name, class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stock_quantity %>
+    <%= form.number_field :stock_quantity, id: :construction_stock_stock_quantity, class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Save', :class=> 'btn btn-primary' %>
+  </div>
+<% end %>

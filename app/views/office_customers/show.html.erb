@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @office_customer.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @office_customer.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @office_customer.email %>
+</p>
+
+<p>
+  <strong>Date of enquiry:</strong>
+  <%= @office_customer.date_of_enquiry %>
+</p>
+
+<p>
+  <strong>From where:</strong>
+  <%= @office_customer.from_where %>
+</p>
+
+<p>
+  <strong>Looking for:</strong>
+  <%= @office_customer.looking_for %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @office_customer.budget %>
+</p>
+
+<p>
+  <strong>Broker:</strong>
+  <%= @office_customer.broker %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @office_customer.status %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @office_customer.comments %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @office_customer.source %>
+</p>
+
+<%= link_to 'Edit', edit_office_customer_path(@office_customer) %> |
+<%= link_to 'Back', office_customers_path %>

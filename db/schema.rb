@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116081339) do
+ActiveRecord::Schema.define(version: 20180131130344) do
+
+  create_table "apartment_payments", force: :cascade do |t|
+    t.integer "office_deal_id"
+    t.integer "amount_paid"
+    t.date "payment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["office_deal_id"], name: "index_apartment_payments_on_office_deal_id"
+  end
+
+  create_table "apartments", force: :cascade do |t|
+    t.string "apartment_name"
+    t.string "carpet_area"
+    t.string "build_up"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_apartments_on_project_id"
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.string "customer_name"
@@ -25,6 +44,48 @@ ActiveRecord::Schema.define(version: 20180116081339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "paid_amount"
+  end
+
+  create_table "construction_payments", force: :cascade do |t|
+    t.string "payee_name"
+    t.string "payee_account"
+    t.integer "amount_paid"
+    t.date "payment_date"
+    t.string "payment_mode"
+    t.string "payemnt_category"
+    t.integer "project_id"
+    t.text "payment_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_construction_payments_on_project_id"
+  end
+
+  create_table "construction_stock_fillings", force: :cascade do |t|
+    t.integer "construction_stock_id"
+    t.integer "quantity"
+    t.date "filling_date"
+    t.string "accepted_by"
+    t.string "filling_location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["construction_stock_id"], name: "index_construction_stock_fillings_on_construction_stock_id"
+  end
+
+  create_table "construction_stock_issues", force: :cascade do |t|
+    t.integer "construction_stock_id"
+    t.integer "quanity"
+    t.date "issue_date"
+    t.string "issued_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["construction_stock_id"], name: "index_construction_stock_issues_on_construction_stock_id"
+  end
+
+  create_table "construction_stocks", force: :cascade do |t|
+    t.string "item_name"
+    t.integer "stock_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "coupons", force: :cascade do |t|
@@ -54,6 +115,40 @@ ActiveRecord::Schema.define(version: 20180116081339) do
     t.index ["guest_id"], name: "index_logs_on_guest_id"
   end
 
+  create_table "office_customers", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.date "date_of_enquiry"
+    t.string "from_where"
+    t.string "looking_for"
+    t.integer "budget"
+    t.string "broker"
+    t.string "status"
+    t.text "comments"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "office_deals", force: :cascade do |t|
+    t.integer "office_customer_id"
+    t.integer "apartment_id"
+    t.integer "base_price"
+    t.integer "stamp_duty"
+    t.integer "registration_charges"
+    t.integer "other_charges"
+    t.integer "maintenance_charges"
+    t.integer "parking_charges"
+    t.integer "developement_charges"
+    t.integer "club_membership_charges"
+    t.integer "furniture_charges"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apartment_id"], name: "index_office_deals_on_apartment_id"
+    t.index ["office_customer_id"], name: "index_office_deals_on_office_customer_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer "booking_id"
     t.decimal "amount_paid"
@@ -62,6 +157,15 @@ ActiveRecord::Schema.define(version: 20180116081339) do
     t.datetime "updated_at", null: false
     t.date "payment_date"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
+    t.integer "number_of_buildings"
+    t.integer "number_of_wings"
+    t.integer "number_of_apartments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "room_bookings", id: false, force: :cascade do |t|
@@ -124,6 +228,7 @@ ActiveRecord::Schema.define(version: 20180116081339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "approved", default: false, null: false
+    t.string "user_type"
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

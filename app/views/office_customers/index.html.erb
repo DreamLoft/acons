@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Office Customers</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Date of enquiry</th>
+      <th>From where</th>
+      <th>Looking for</th>
+      <th>Budget</th>
+      <th>Broker</th>
+      <th>Status</th>
+      <th>Comments</th>
+      <th>Source</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @office_customers.each do |office_customer| %>
+      <tr>
+        <td><%= office_customer.name %></td>
+        <td><%= office_customer.phone %></td>
+        <td><%= office_customer.email %></td>
+        <td><%= office_customer.date_of_enquiry %></td>
+        <td><%= office_customer.from_where %></td>
+        <td><%= office_customer.looking_for %></td>
+        <td><%= office_customer.budget %></td>
+        <td><%= office_customer.broker %></td>
+        <td><%= office_customer.status %></td>
+        <td><%= office_customer.comments %></td>
+        <td><%= office_customer.source %></td>
+        <td><%= link_to 'Show', office_customer %></td>
+        <td><%= link_to 'Edit', edit_office_customer_path(office_customer) %></td>
+        <td><%= link_to 'Destroy', office_customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Office Customer', new_office_customer_path, class: 'btn btn-primary' %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  office_customer: one
+  apartment: one
+  base_price: 1
+  stamp_duty: 1
+  registration_charges: 1
+  other_charges: 1
+  maintenance_charges: 1
+  parking_charges: 1
+  developement_charges: 1
+  club_membership_charges: 1
+  furniture_charges: 1
+
+two:
+  office_customer: two
+  apartment: two
+  base_price: 1
+  stamp_duty: 1
+  registration_charges: 1
+  other_charges: 1
+  maintenance_charges: 1
+  parking_charges: 1
+  developement_charges: 1
+  club_membership_charges: 1
+  furniture_charges: 1

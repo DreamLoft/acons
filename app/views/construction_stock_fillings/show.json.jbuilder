@@ -1,0 +1,1 @@
+json.partial! "construction_stock_fillings/construction_stock_filling", construction_stock_filling: @construction_stock_filling
