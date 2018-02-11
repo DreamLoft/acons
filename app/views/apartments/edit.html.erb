@@ -1,6 +1,42 @@
 <h1>Editing Apartment</h1>
 
-<%= render 'form', apartment: @apartment %>
+<%= form_with(model: [@project,@apartment] , local: true) do |form| %>
+  <% if @apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(apartment.errors.count, "error") %> prohibited this apartment from being saved:</h2>
 
-<%= link_to 'Show', @apartment %> |
-<%= link_to 'Back', apartments_path %>
+      <ul>
+      <% apartment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :apartment_name %>
+    <%= form.text_field :apartment_name, id: :apartment_apartment_name , class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carpet_area %>
+    <%= form.text_field :carpet_area, id: :apartment_carpet_area , class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :build_up %>
+    <%= form.text_field :build_up, id: :apartment_build_up , class:'form-control' %>
+  </div>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :apartment_status , class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit 'Save' , :class=>"btn btn-primary" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', project_apartment_path(@project, @apartment) %> |
+<%= link_to 'Back', project_apartments_path(@project) %>

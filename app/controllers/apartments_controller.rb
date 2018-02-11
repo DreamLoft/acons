@@ -1,10 +1,12 @@
 class ApartmentsController < ApplicationController
+  before_action :set_project
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.all
+    #@apartments = Apartment.all
+    @apartments= @project.apartments
   end
 
   # GET /apartments/1
@@ -19,17 +21,19 @@ class ApartmentsController < ApplicationController
 
   # GET /apartments/1/edit
   def edit
+    #render json: @apartment
   end
 
   # POST /apartments
   # POST /apartments.json
   def create
-    @apartment = Apartment.new(apartment_params)
-
+    #@apartment = Apartment.new(apartment_params)
+    @apartment= @project.apartments.create(apartment_params)
+    #@comment = @article.comments.create(comment_params)
     respond_to do |format|
       if @apartment.save
-        format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
-        format.json { render :show, status: :created, location: @apartment }
+        format.html { redirect_to project_apartments_path(@project), notice: 'Apartment was successfully created.' }
+#        format.json { render :show, status: :created, location: @apartment }
       else
         format.html { render :new }
         format.json { render json: @apartment.errors, status: :unprocessable_entity }
@@ -42,7 +46,7 @@ class ApartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @apartment.update(apartment_params)
-        format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
+        format.html { redirect_to project_apartment_path(@project,@apartment), notice: 'Apartment was successfully updated.' }
         format.json { render :show, status: :ok, location: @apartment }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class ApartmentsController < ApplicationController
   def destroy
     @apartment.destroy
     respond_to do |format|
-      format.html { redirect_to apartments_url, notice: 'Apartment was successfully destroyed.' }
+      format.html { redirect_to project_apartments_path(@project), notice: 'Apartment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,9 +70,12 @@ class ApartmentsController < ApplicationController
     def set_apartment
       @apartment = Apartment.find(params[:id])
     end
+    def set_project
+      @project= Project.find(params[:project_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:apartment_name, :carpet_area, :build_up, :project_id)
+      params.require(:apartment).permit(:apartment_name, :carpet_area, :build_up, :project_id,:status)
     end
 end

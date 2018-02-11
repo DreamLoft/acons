@@ -1,10 +1,11 @@
 class ApartmentPaymentsController < ApplicationController
+  before_action :set_office_deal
   before_action :set_apartment_payment, only: [:show, :edit, :update, :destroy]
 
   # GET /apartment_payments
   # GET /apartment_payments.json
   def index
-    @apartment_payments = ApartmentPayment.all
+    @apartment_payments = ApartmentPayment.where(:office_deal_id => @office_deal.id)
   end
 
   # GET /apartment_payments/1
@@ -25,11 +26,12 @@ class ApartmentPaymentsController < ApplicationController
   # POST /apartment_payments.json
   def create
     @apartment_payment = ApartmentPayment.new(apartment_payment_params)
+    @apartment_payment.office_deal_id= @office_deal.id
 
     respond_to do |format|
       if @apartment_payment.save
-        format.html { redirect_to @apartment_payment, notice: 'Apartment payment was successfully created.' }
-        format.json { render :show, status: :created, location: @apartment_payment }
+        format.html { redirect_to office_deal_apartment_payments_path, notice: 'Apartment payment was successfully created.' }
+#        format.json { render :show, status: :created, location: @apartment_payment }
       else
         format.html { render :new }
         format.json { render json: @apartment_payment.errors, status: :unprocessable_entity }
@@ -65,6 +67,9 @@ class ApartmentPaymentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment_payment
       @apartment_payment = ApartmentPayment.find(params[:id])
+    end
+    def set_office_deal
+      @office_deal= OfficeDeal.find(params[:office_deal_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -16,8 +16,12 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @apartment.project %>
+  <%= @apartment.project.project_name %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @apartment.status %>
 </p>
 
-<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
-<%= link_to 'Back', apartments_path %>
+<%= link_to 'Edit', edit_project_apartment_path(@project,@apartment) %> |
+<%= link_to 'Back', project_apartments_path(@project) %>

@@ -23,8 +23,8 @@
   <tbody>
     <% @office_deals.each do |office_deal| %>
       <tr>
-        <td><%= office_deal.office_customer %></td>
-        <td><%= office_deal.apartment %></td>
+        <td><%= office_deal.office_customer.name %></td>
+        <td><%= office_deal.apartment.apartment_name %></td>
         <td><%= office_deal.base_price %></td>
         <td><%= office_deal.stamp_duty %></td>
         <td><%= office_deal.registration_charges %></td>

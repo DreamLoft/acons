@@ -15,10 +15,14 @@ class OfficeDealsController < ApplicationController
   # GET /office_deals/new
   def new
     @office_deal = OfficeDeal.new
+    @projects= Project.all
+    @office_customers= OfficeCustomer.all
   end
 
   # GET /office_deals/1/edit
   def edit
+    @projects= Project.all
+    @office_customers= OfficeCustomer.all
   end
 
   # POST /office_deals

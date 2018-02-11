@@ -10,16 +10,39 @@
       </ul>
     </div>
   <% end %>
+<% if !(@office_customers)%>
+<div class="field">
+  <p>Create acustomer first</p>
+</div>
+<% else %>
+<div class="field">
+  <%= form.label :office_customer_id %><br>
+  <%= form.select(:office_customer_id) do %>
+    <% @office_customers.each do |c| -%>
+        <%= content_tag(:option, c.name , value: c.id) %>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :office_customer_id %>
-    <%= form.text_field :office_customer_id, id: :office_deal_office_customer_id, class:'form-control' %>
-  </div>
 
+
+<% if !(@projects || @apartments)%>
+<div class="field">
+  <p>No Apartment is cretaed</p>
+</div>
+<% else %>
   <div class="field">
-    <%= form.label :apartment_id %>
-    <%= form.text_field :apartment_id, id: :office_deal_apartment_id, class:'form-control' %>
+    <%= form.label :apartment_id %><br>
+    <%= form.select(:apartment_id) do %>
+      <% @projects.each do |p| -%>
+        <% p.apartments.each do |ap| -%>
+          <%= content_tag(:option, p.project_name + " - "+ ap.apartment_name, value: ap.id) %>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
+<% end %>
 
   <div class="field">
     <%= form.label :base_price %>

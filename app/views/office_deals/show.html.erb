@@ -2,12 +2,12 @@
 
 <p>
   <strong>Office customer:</strong>
-  <%= @office_deal.office_customer %>
+  <%= @office_deal.office_customer.name %>
 </p>
 
 <p>
   <strong>Apartment:</strong>
-  <%= @office_deal.apartment %>
+  <%= @office_deal.apartment.apartment_name %>
 </p>
 
 <p>
@@ -56,4 +56,5 @@
 </p>
 
 <%= link_to 'Edit', edit_office_deal_path(@office_deal) %> |
-<%= link_to 'Back', office_deals_path %>
+<%= link_to 'Back', office_deals_path %> |
+<%= link_to 'Payments', office_deal_apartment_payments_path(@office_deal) %>
