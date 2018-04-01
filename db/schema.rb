@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210210219) do
+ActiveRecord::Schema.define(version: 20180331205444) do
 
   create_table "apartment_payments", force: :cascade do |t|
     t.integer "office_deal_id"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 20180210210219) do
     t.integer "furniture_charges"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "total_price"
     t.index ["apartment_id"], name: "index_office_deals_on_apartment_id"
     t.index ["office_customer_id"], name: "index_office_deals_on_office_customer_id"
   end

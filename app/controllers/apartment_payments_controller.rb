@@ -15,7 +15,7 @@ class ApartmentPaymentsController < ApplicationController
 
   # GET /apartment_payments/new
   def new
-    @apartment_payment = ApartmentPayment.new
+    @apartment_payment = @office_deal.apartment_payments.build
   end
 
   # GET /apartment_payments/1/edit

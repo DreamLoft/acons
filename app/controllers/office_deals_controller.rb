@@ -73,6 +73,6 @@ class OfficeDealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def office_deal_params
-      params.require(:office_deal).permit(:office_customer_id, :apartment_id, :base_price, :stamp_duty, :registration_charges, :other_charges, :maintenance_charges, :parking_charges, :developement_charges, :club_membership_charges, :furniture_charges)
+      params.require(:office_deal).permit(:office_customer_id, :apartment_id, :base_price, :stamp_duty, :registration_charges, :other_charges, :maintenance_charges, :parking_charges, :developement_charges, :club_membership_charges, :furniture_charges, :total_price)
     end
 end

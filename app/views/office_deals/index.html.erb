@@ -7,15 +7,9 @@
     <tr>
       <th>Office customer</th>
       <th>Apartment</th>
-      <th>Base price</th>
-      <th>Stamp duty</th>
-      <th>Registration charges</th>
-      <th>Other charges</th>
-      <th>Maintenance charges</th>
-      <th>Parking charges</th>
-      <th>Developement charges</th>
-      <th>Club membership charges</th>
-      <th>Furniture charges</th>
+      <th>Total Price</th>
+      <th>Amount Paid</th>
+      <th>Amount Pending</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,17 +17,11 @@
   <tbody>
     <% @office_deals.each do |office_deal| %>
       <tr>
-        <td><%= office_deal.office_customer.name %></td>
-        <td><%= office_deal.apartment.apartment_name %></td>
-        <td><%= office_deal.base_price %></td>
-        <td><%= office_deal.stamp_duty %></td>
-        <td><%= office_deal.registration_charges %></td>
-        <td><%= office_deal.other_charges %></td>
-        <td><%= office_deal.maintenance_charges %></td>
-        <td><%= office_deal.parking_charges %></td>
-        <td><%= office_deal.developement_charges %></td>
-        <td><%= office_deal.club_membership_charges %></td>
-        <td><%= office_deal.furniture_charges %></td>
+        <td>  <%= link_to office_deal.office_customer.name.to_s , office_customer_path(office_deal.office_customer) %> </td>
+        <td>  <%= link_to office_deal.apartment.apartment_name.to_s , project_apartment_path(office_deal.apartment.project , office_deal.apartment ) %> </td>
+        <td><%= office_deal.total_price %></td>
+        <td><%= office_deal.apartment_payments.sum(:amount_paid) %> </td>
+        <td><%= (office_deal.total_price - office_deal.apartment_payments.sum(:amount_paid)) %> </td>
         <td><%= link_to 'Show', office_deal %></td>
         <td><%= link_to 'Edit', edit_office_deal_path(office_deal) %></td>
         <td><%= link_to 'Destroy', office_deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -54,6 +54,18 @@
   <strong>Furniture charges:</strong>
   <%= @office_deal.furniture_charges %>
 </p>
+<p>
+  <strong>Total Price: </strong>
+  <%= @office_deal.total_price %>
+</p>
+<p>
+  <strong>Amount Paid: </strong>
+  <%= @office_deal.apartment_payments.sum(:amount_paid) %>
+</p>
+<p>
+  <strong>Pending Amount: </strong>
+  <%= (@office_deal.total_price - @office_deal.apartment_payments.sum(:amount_paid)) %>
+</p>
 
 <%= link_to 'Edit', edit_office_deal_path(@office_deal) %> |
 <%= link_to 'Back', office_deals_path %> |

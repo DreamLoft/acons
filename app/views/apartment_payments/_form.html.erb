@@ -1,4 +1,4 @@
-<%= form_with(model: [@office_deal, @office_deal.apartment_payments.build], local: true) do |form| %>
+<%= form_for( [@office_deal, @office_deal.apartment_payments.build]) do |form| %>
   <% if apartment_payment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(apartment_payment.errors.count, "error") %> prohibited this apartment_payment from being saved:</h2>
