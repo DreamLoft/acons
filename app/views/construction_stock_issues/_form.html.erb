@@ -1,4 +1,4 @@
-<%= form_with(model: construction_stock_issue, local: true) do |form| %>
+<%= bootstrap_form_for(@construction_stock_issue, local: true) do |form| %>
   <% if construction_stock_issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(construction_stock_issue.errors.count, "error") %> prohibited this construction_stock_issue from being saved:</h2>
@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= form.label :construction_stock_id %>
-    <%= form.text_field :construction_stock_id, id: :construction_stock_issue_construction_stock_id, class:'form-control' %>
+    <%= form.text_field :construction_stock_id, id: :construction_stock_issue_construction_stock_id, class:'form-control', skip_label: true, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :quanity %>
-    <%= form.number_field :quanity, id: :construction_stock_issue_quanity, class:'form-control' %>
+    <%= form.number_field :quanity, id: :construction_stock_issue_quanity, class:'form-control', skip_label: true, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :issue_date %>
-    <%= form.date_select :issue_date, id: :construction_stock_issue_issue_date, class:'form-control' %>
+    <%= form.date_select :issue_date, id: :construction_stock_issue_issue_date, class:'form-control', skip_label: true, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :issued_to %>
-    <%= form.text_field :issued_to, id: :construction_stock_issue_issued_to, class:'form-control' %>
+    <%= form.text_field :issued_to, id: :construction_stock_issue_issued_to, class:'form-control', skip_label: true, required: true %>
   </div>
 <br>
   <div class="actions">

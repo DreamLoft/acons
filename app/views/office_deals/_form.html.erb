@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-<% if !(@office_customers)%>
+<% if (@office_customers.blank?)%>
 <div class="field">
   <p>Create acustomer first</p>
 </div>
@@ -26,7 +26,7 @@
 
 
 
-<% if !(@projects || @apartments)%>
+<% if (@projects.blank? || @apartments.blank?)%>
 <div class="field">
   <p>No Apartment is cretaed</p>
 </div>

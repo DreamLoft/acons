@@ -1,4 +1,4 @@
-<%= form_with(model: construction_stock_filling, local: true) do |form| %>
+<%= bootstrap_form_for(@construction_stock_filling, local: true) do |form| %>
   <% if construction_stock_filling.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(construction_stock_filling.errors.count, "error") %> prohibited this construction_stock_filling from being saved:</h2>
@@ -13,27 +13,27 @@
 
   <div class="field">
     <%= form.label :construction_stock_id %>
-    <%= form.text_field :construction_stock_id, id: :construction_stock_filling_construction_stock_id, class:'form-control'  %>
+    <%= form.text_field :construction_stock_id, id: :construction_stock_filling_construction_stock_id, class:'form-control' , skip_label: true, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :construction_stock_filling_quantity, class:'form-control' %>
+    <%= form.number_field :quantity, id: :construction_stock_filling_quantity, class:'form-control', skip_label: true , required: true %>
   </div>
 
   <div class="field">
     <%= form.label :filling_date %>
-    <%= form.date_select :filling_date, id: :construction_stock_filling_filling_date, class:'form-control' %>
+    <%= form.date_select :filling_date, id: :construction_stock_filling_filling_date, class:'form-control', required: true, skip_label: true %>
   </div>
 
   <div class="field">
     <%= form.label :accepted_by %>
-    <%= form.text_field :accepted_by, id: :construction_stock_filling_accepted_by, class:'form-control' %>
+    <%= form.text_field :accepted_by, id: :construction_stock_filling_accepted_by, class:'form-control' , skip_label: true, required: true%>
   </div>
 
   <div class="field">
     <%= form.label :filling_location %>
-    <%= form.text_field :filling_location, id: :construction_stock_filling_filling_location, class:'form-control' %>
+    <%= form.text_field :filling_location, id: :construction_stock_filling_filling_location, class:'form-control' , skip_label: true , required: true %>
   </div>
 <br>
   <div class="actions">
