@@ -1,0 +1,2 @@
+class PayeeCategory < ApplicationRecord
+end

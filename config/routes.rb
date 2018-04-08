@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :payees
+  resources :payee_categories
   resources :construction_stock_issues
   resources :construction_stock_fillings
   resources :construction_stocks
@@ -23,7 +25,8 @@ Rails.application.routes.draw do
   resources :bookings do
       resources :room_services
   end
-  resources :users
+  resources :users, except: :create
+  post 'create_user' => 'users#create', as: :create_user
 #  resources :payments
   resources :stocks, except: [:edit , :update]
   resources :stock_items

@@ -1,2 +1,0 @@
-class UsersInfoController < ApplicationController
-end

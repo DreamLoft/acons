@@ -1,4 +1,5 @@
 class ConstructionStockIssuesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_construction_stock_issue, only: [:show, :edit, :update, :destroy]
 
   # GET /construction_stock_issues

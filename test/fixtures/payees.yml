@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payee_category: one
+  payee_name: MyString
+  payee_account: MyString
+
+two:
+  payee_category: two
+  payee_name: MyString
+  payee_account: MyString

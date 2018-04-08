@@ -1,4 +1,5 @@
 class OfficeDealsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_office_deal, only: [:show, :edit, :update, :destroy]
 
   # GET /office_deals

@@ -1,4 +1,5 @@
 class StockItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_stock_item, only: [:show, :edit, :update, :destroy]
 
   # GET /stock_items

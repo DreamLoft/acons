@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331205444) do
+ActiveRecord::Schema.define(version: 20180401211439) do
 
   create_table "apartment_payments", force: :cascade do |t|
     t.integer "office_deal_id"
@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 20180331205444) do
   end
 
   create_table "construction_payments", force: :cascade do |t|
-    t.string "payee_name"
-    t.string "payee_account"
     t.integer "amount_paid"
     t.date "payment_date"
     t.string "payment_mode"
@@ -58,6 +56,8 @@ ActiveRecord::Schema.define(version: 20180331205444) do
     t.text "payment_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "payee_id"
+    t.index ["payee_id"], name: "index_construction_payments_on_payee_id"
     t.index ["project_id"], name: "index_construction_payments_on_project_id"
   end
 
@@ -149,6 +149,22 @@ ActiveRecord::Schema.define(version: 20180331205444) do
     t.decimal "total_price"
     t.index ["apartment_id"], name: "index_office_deals_on_apartment_id"
     t.index ["office_customer_id"], name: "index_office_deals_on_office_customer_id"
+  end
+
+  create_table "payee_categories", force: :cascade do |t|
+    t.string "category_name"
+    t.string "category_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payees", force: :cascade do |t|
+    t.integer "payee_category_id"
+    t.string "payee_name"
+    t.string "payee_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payee_category_id"], name: "index_payees_on_payee_category_id"
   end
 
   create_table "payments", force: :cascade do |t|

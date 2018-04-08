@@ -1,4 +1,5 @@
 class ConstructionStockFillingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_construction_stock_filling, only: [:show, :edit, :update, :destroy]
 
   # GET /construction_stock_fillings

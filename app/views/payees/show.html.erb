@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Payee category:</strong>
+  <%= @payee.payee_category.category_name %>
+</p>
+
+<p>
+  <strong>Payee name:</strong>
+  <%= @payee.payee_name %>
+</p>
+
+<p>
+  <strong>Payee account:</strong>
+  <%= @payee.payee_account %>
+</p>
+
+<%= link_to 'Edit', edit_payee_path(@payee) %> |
+<%= link_to 'Back', payees_path %>

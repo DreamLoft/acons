@@ -1,4 +1,5 @@
 class ApartmentPaymentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_office_deal
   before_action :set_apartment_payment, only: [:show, :edit, :update, :destroy]
 

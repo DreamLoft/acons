@@ -1,0 +1,21 @@
+<%= link_to 'New User', new_user_path, class: 'btn btn-primary' %><br><br>
+<table class="table table-hover" >
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Type</th>
+      <th>Approved?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.user_type.try(:humanize) %></td>
+        <td><%= user.approved? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,39 @@
+<%= bootstrap_form_for(@payee) do |form| %>
+  <% if payee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(payee.errors.count, "error") %> prohibited this payee from being saved:</h2>
+
+      <ul>
+      <% payee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if !(@categories)%>
+  <div class="field">
+    <p>No Category is cretaed</p>
+  </div>
+  <% else %>
+    <div class="field">
+      <%= form.select(:payee_category_id) do %>
+          <% @categories.each do |ap| -%>
+            <%= content_tag(:option, ap.category_name, value: ap.id) %>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :payee_name, id: :payee_payee_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :payee_account, id: :payee_payee_account , required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

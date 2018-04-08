@@ -1,4 +1,5 @@
 class OfficeCustomersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_office_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /office_customers

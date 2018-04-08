@@ -1,0 +1,21 @@
+<%= bootstrap_form_for @user, url: create_user_path do |f| %>
+<div class="field">
+
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+  <% if @minimum_password_length %>
+  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <% end %><br />
+  <%= f.password_field :password, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.select(:user_type, options_for_select([['Admin','admin'],['Hotel Staff','hotel_staff'],['Office Staff','office_staff']])) %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Create User" %>
+</div>
+<% end %>

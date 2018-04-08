@@ -2,12 +2,12 @@
 
 <p>
   <strong>Payee name:</strong>
-  <%= @construction_payment.payee_name %>
+  <%= @construction_payment.payee.payee_name %>
 </p>
 
 <p>
   <strong>Payee account:</strong>
-  <%= @construction_payment.payee_account %>
+  <%= @construction_payment.payee.payee_account %>
 </p>
 
 <p>
@@ -32,7 +32,7 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @construction_payment.project %>
+  <%= @construction_payment.project.project_name %>
 </p>
 
 <p>

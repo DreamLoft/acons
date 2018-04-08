@@ -1,7 +1,20 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Construction Payments</h1>
-
+<hr>
+<div class="row">
+  <%= bootstrap_form_tag url: '/construction_payments', method: :get do |form| %>
+  <div class="col-md-6">
+  <%= form.select(:project_id ,options_from_collection_for_select(Project.all, :id, :project_name), :include_blank => "Select Project", skip_label: true) %>
+</div>
+<div class="col-md-4">
+  <%= form.select(:payee_id ,options_from_collection_for_select(Payee.all, :id, :payee_name), :include_blank => "Select Payee", skip_label: true) %>
+  </div>
+<div class="col-md-2">
+    <%= form.submit 'Filter', :class=>'btn btn-default' %>
+</div>
+  <% end %>
+</div>
+<hr>
 <table class="table table-hover" >
   <thead>
     <tr>
@@ -12,7 +25,6 @@
       <th>Payment mode</th>
       <th>Payemnt category</th>
       <th>Project</th>
-      <th>Payment info</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,14 +32,13 @@
   <tbody>
     <% @construction_payments.each do |construction_payment| %>
       <tr>
-        <td><%= construction_payment.payee_name %></td>
-        <td><%= construction_payment.payee_account %></td>
+        <td><%= construction_payment.payee.payee_name %></td>
+        <td><%= construction_payment.payee.payee_account %></td>
         <td><%= construction_payment.amount_paid %></td>
         <td><%= construction_payment.payment_date %></td>
         <td><%= construction_payment.payment_mode %></td>
         <td><%= construction_payment.payemnt_category %></td>
-        <td><%= construction_payment.project %></td>
-        <td><%= construction_payment.payment_info %></td>
+        <td><%= link_to construction_payment.project.project_name, project_path(construction_payment.project) %></td>
         <td><%= link_to 'Show', construction_payment %></td>
         <td><%= link_to 'Edit', edit_construction_payment_path(construction_payment) %></td>
         <td><%= link_to 'Destroy', construction_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

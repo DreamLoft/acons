@@ -1,0 +1,28 @@
+
+<h1>Payee Categories</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Category name</th>
+      <th>Category description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payee_categories.each do |payee_category| %>
+      <tr>
+        <td><%= payee_category.category_name %></td>
+        <td><%= payee_category.category_description %></td>
+        <td><%= link_to 'Show', payee_category %></td>
+        <td><%= link_to 'Edit', edit_payee_category_path(payee_category) %></td>
+        <td><%= link_to 'Destroy', payee_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payee Category', new_payee_category_path , class: 'btn btn-primary'  %>
