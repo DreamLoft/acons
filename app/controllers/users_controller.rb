@@ -7,6 +7,17 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+  def edit
+    @user= User.find(params[:id])
+  end
+  def update
+    @user= User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_path, notice: 'User was successfully Updated.'
+    else
+      render :edit
+    end
+  end
   def create
       @user = User.new(user_params)
      respond_to do |format|
@@ -24,6 +35,6 @@ class UsersController < ApplicationController
   redirect_to root_path, alert: 'Admins only!'
 end
 def user_params
-  params.require(:user).permit(:email, :password, :user_type)
+  params.require(:user).permit(:email, :password, :user_type, :approved)
 end
 end

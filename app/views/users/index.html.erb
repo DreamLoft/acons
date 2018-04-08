@@ -15,6 +15,7 @@
         <td><%= user.email %></td>
         <td><%= user.user_type.try(:humanize) %></td>
         <td><%= user.approved? %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>

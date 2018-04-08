@@ -1,4 +1,4 @@
-<%= bootstrap_form_for @user, url: create_user_path do |f| %>
+<%= bootstrap_form_for @user do |f| %>
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this guest from being saved:</h2>
@@ -11,15 +11,7 @@
   </div>
 <% end %>
 <div class="field">
-
   <%= f.email_field :email, autofocus: true %>
-</div>
-
-<div class="field">
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "off" %>
 </div>
 
 <div class="field">
@@ -28,8 +20,7 @@
 <div class="field">
   <%= f.select(:approved, options_for_select([['Approved',true],['Suspended',false]])) %>
 </div>
-
 <div class="actions">
-  <%= f.submit "Create User" %>
+  <%= f.submit "Update User" %>
 </div>
 <% end %>
