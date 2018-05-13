@@ -11,9 +11,9 @@
   </div>
 <% end %>
 
-  <%= f.text_field :customer_name ,type:"text"  ,  label: "Customer Name" ,:required => true %>
-  <%= f.text_field :customer_email ,type:"email" , label: "Customer Email" ,:required => true %>
-  <%= f.text_field :customer_mobile ,type:"tel"   ,label: "Customer Contact Number" ,:required => true %>
+  <%= f.text_field :customer_name ,type:"text"  ,  label: "Customer Name" ,:required => true, value: (params[:enquiry].present? ? Guest.find(params[:enquiry]).name : nil ) %>
+  <%= f.text_field :customer_email ,type:"email" , label: "Customer Email" ,:required => true, value: (params[:enquiry].present? ? Guest.find(params[:enquiry]).email : nil ) %>
+  <%= f.text_field :customer_mobile ,type:"tel"   ,label: "Customer Contact Number" ,:required => true, value: (params[:enquiry].present? ? Guest.find(params[:enquiry]).mobile : nil ) %>
   <%= f.date_select :booking_date , leble: "Select Booking Date", :required => true %>
   <%= f.text_field :total_guests ,type:"number" ,  label: "Total Guests" ,:required => true %>
   <%= f.date_select :booked_from , leble: "Booked From (Expected Checkin Date) ", :required => true %>
