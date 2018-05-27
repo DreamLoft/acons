@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :construction_stock_id %>
-    <%= form.text_field :construction_stock_id, id: :construction_stock_issue_construction_stock_id, class:'form-control', skip_label: true, required: true %>
+    <%= form.select(:construction_stock_id ,options_from_collection_for_select(ConstructionStock.all, :id, :item_name), :include_blank => "Select Item", skip_label: true) %>
   </div>
 
   <div class="field">

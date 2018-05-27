@@ -28,7 +28,10 @@ class ConstructionStockFillingsController < ApplicationController
     @construction_stock_filling = ConstructionStockFilling.new(construction_stock_filling_params)
 
     respond_to do |format|
-      if @construction_stock_filling.save
+      if @construction_stock_filling.save 
+        construction_stock= @construction_stock_filling.construction_stock
+        construction_stock.stock_quantity = construction_stock.stock_quantity +  @construction_stock_filling.quantity
+        construction_stock.save
         format.html { redirect_to @construction_stock_filling, notice: 'Construction stock filling was successfully created.' }
         format.json { render :show, status: :created, location: @construction_stock_filling }
       else

@@ -77,6 +77,6 @@ class ConstructionPaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def construction_payment_params
-      params.require(:construction_payment).permit(:payee_name, :payee_account, :amount_paid, :payment_date, :payment_mode, :payemnt_category, :project_id, :payment_info)
+      params.require(:construction_payment).permit(:payee_id, :amount_paid, :payment_date, :payment_mode, :payemnt_category, :project_id, :payment_info)
     end
 end

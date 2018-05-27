@@ -31,7 +31,6 @@
                 <li><%= link_to 'Rooms', rooms_path %></li>
                 <li><%= link_to 'Coupons', coupons_path %></li>
                 <li><%= link_to 'Enquiry', guests_path %></li>
-                <li><%= link_to 'Stock Items', stock_items_path %></li>
                 <li><%= link_to 'Stock', stocks_path %></li>
                 <li><%= link_to 'Bookings', bookings_path %></li>
               <% elsif current_user.user_type == "office_staff" %>
@@ -44,8 +43,6 @@
                 <li><%= link_to 'Payee', payees_path %></li>
                 <li><%= link_to 'Construction Payments', construction_payments_path %></li>
                 <li><%= link_to 'Stock', construction_stocks_path %></li>
-                <li><%= link_to 'Stock Filling', construction_stock_fillings_path %></li>
-                <li><%= link_to 'Issue Stock', construction_stock_issues_path %></li>
               <% elsif current_user.user_type == "admin" %>
               <li role="presentation" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hotel <span class="caret"></span></a>
@@ -53,7 +50,6 @@
                   <li><%= link_to 'Rooms', rooms_path %></li>
                   <li><%= link_to 'Coupons', coupons_path %></li>
                   <li><%= link_to 'Enquiry', guests_path %></li>
-                  <li><%= link_to 'Stock Items', stock_items_path %></li>
                   <li><%= link_to 'Stock', stocks_path %></li>
                   <li><%= link_to 'Bookings', bookings_path %></li>
                 </ul>
@@ -69,8 +65,6 @@
                   <li><%= link_to 'Payee', payees_path %></li>
                   <li><%= link_to 'Construction Payments', construction_payments_path %></li>
                   <li><%= link_to 'Stock', construction_stocks_path %></li>
-                  <li><%= link_to 'Stock Filling', construction_stock_fillings_path %></li>
-                  <li><%= link_to 'Issue Stock', construction_stock_issues_path %></li>
                 </ul>
               </li>
               <li><%= link_to 'User', users_path %></li>

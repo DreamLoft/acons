@@ -13,9 +13,7 @@
 <% end %>
 
 <%= f.select :stock_item_id,  label: "Select Item" do %>
-  <% @stock_items.each do |item| -%>
-    <%= content_tag(:option, item.name, value: item.id) %>
-  <% end %>
+  <%= options_from_collection_for_select(StockItem.all, :id, :name) %>
 <% end %>
   <%= f.date_select :filling_date, id: :stock_filling_date  %>
   <%= f.text_field :quantity ,type:"number" , class: 'form-control',  label: "Quantity" ,:required => true %>

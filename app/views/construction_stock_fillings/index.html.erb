@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<ul class="nav nav-tabs">
+  <li><a href="<%= construction_stocks_path %>">Construction Stock</a></li>
+  <li class="active"><a href="<%= construction_stock_fillings_path %>">Construction Stock Filling</a></li>
+  <li><a href="<%= construction_stock_issues_path %>">Issue Stock</a></li>
+</ul>
+
+<br><br>
 
 <h1>Construction Stock Fillings</h1>
 
@@ -17,7 +23,7 @@
   <tbody>
     <% @construction_stock_fillings.each do |construction_stock_filling| %>
       <tr>
-        <td><%= construction_stock_filling.construction_stock %></td>
+        <td><%= construction_stock_filling.construction_stock.item_name %></td>
         <td><%= construction_stock_filling.quantity %></td>
         <td><%= construction_stock_filling.filling_date %></td>
         <td><%= construction_stock_filling.accepted_by %></td>
