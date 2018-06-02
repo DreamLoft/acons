@@ -18,6 +18,9 @@
   <div class="field">
     <%= form.date_select :payment_date, id: :apartment_payment_payment_date, class:'form-control' %>
   </div>
+  <div class="field">
+    <%= form.text_area :description, id: :apartment_payment_description, class:'form-control' %>
+  </div>
 
   <div class="actions">
     <%= form.submit 'Save', class:'btn btn-primary' %>

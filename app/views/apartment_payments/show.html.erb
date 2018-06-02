@@ -2,7 +2,7 @@
 
 <p>
   <strong>Office deal:</strong>
-  <%= @apartment_payment.office_deal %>
+  <%= link_to 'Deal', office_deal_path(@apartment_payment.office_deal) %>
 </p>
 
 <p>
@@ -14,6 +14,9 @@
   <strong>Payment date:</strong>
   <%= @apartment_payment.payment_date %>
 </p>
-
-<%= link_to 'Edit', edit_apartment_payment_path(@apartment_payment) %> |
-<%= link_to 'Back', apartment_payments_path %>
+<p>
+  <strong>Description:</strong>
+  <%= @apartment_payment.description %>
+</p>
+<%= link_to 'Edit', edit_office_deal_apartment_payment_path(@apartment_payment.office_deal,@apartment_payment) %> |
+<%= link_to 'Back', office_deal_apartment_payments_path %>

@@ -16,6 +16,9 @@
       <tr>
         <td><%= apartment_payment.amount_paid %></td>
         <td><%= apartment_payment.payment_date %></td>
+        <td>
+        <%= link_to 'Show', office_deal_apartment_payment_path(apartment_payment.office_deal,apartment_payment) %>
+      </td>
       </tr>
     <% end %>
   </tbody>

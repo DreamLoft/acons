@@ -28,14 +28,15 @@ class ConstructionStockIssuesController < ApplicationController
     @construction_stock_issue = ConstructionStockIssue.new(construction_stock_issue_params)
 
     respond_to do |format|
-      if @construction_stock_issue.save
+      if ((@construction_stock_issue.construction_stock.stock_quantity -  @construction_stock_issue.quanity)>0 && @construction_stock_issue.save)
         construction_stock= @construction_stock_issue.construction_stock
         construction_stock.stock_quantity = construction_stock.stock_quantity -  @construction_stock_issue.quanity
         construction_stock.save
         format.html { redirect_to @construction_stock_issue, notice: 'Construction stock issue was successfully created.' }
         format.json { render :show, status: :created, location: @construction_stock_issue }
       else
-        format.html { render :new }
+        flash[:notice] = "Could not issue the stock. Please make sure you have enough stock available."
+        format.html { render :new}
         format.json { render json: @construction_stock_issue.errors, status: :unprocessable_entity }
       end
     end

@@ -1,13 +1,15 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Payee name:</strong>
-  <%= @construction_payment.payee.payee_name %>
+  <%= link_to @construction_payment.payee.payee_name , payee_path(@construction_payment.payee) %>
 </p>
-
 <p>
-  <strong>Payee account:</strong>
-  <%= @construction_payment.payee.payee_account %>
+  <strong>Payee Account:</strong>
+  <%= @construction_payment.payee_account %>
+</p>
+<p>
+  <strong>Intermediary</strong>
+  <%= link_to Payee.find(@construction_payment.intermediary).try(:payee_name) , payee_path(@construction_payment.intermediary) %>
 </p>
 
 <p>

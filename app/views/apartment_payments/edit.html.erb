@@ -2,5 +2,5 @@
 
 <%= render 'form', apartment_payment: @apartment_payment %>
 
-<%= link_to 'Show', @apartment_payment %> |
-<%= link_to 'Back', apartment_payments_path %>
+<%= link_to 'Show', office_deal_apartment_payment_path(@apartment_payment.office_deal,@apartment_payment) %> |
+<%= link_to 'Back', office_deal_apartment_payments_path %>

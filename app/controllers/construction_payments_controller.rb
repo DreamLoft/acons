@@ -1,6 +1,5 @@
 class ConstructionPaymentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :payee_list, only: [:edit, :new]
   before_action :set_construction_payment, only: [:show, :edit, :update, :destroy]
   # GET /construction_payments
   # GET /construction_payments.json
@@ -8,7 +7,7 @@ class ConstructionPaymentsController < ApplicationController
     #render json: params
     @construction_payments = ConstructionPayment.all
     @construction_payments = @construction_payments.where(project_id: params[:project_id]) if params[:project_id].present?
-    @construction_payments =@construction_payments.where(payee_id: params[:payee_id]) if params[:payee_id].present?
+    @construction_payments = @construction_payments.where("payee_id = ? OR intermediary = ? ",params[:payee_id],params[:payee_id]) if params[:payee_id].present?
   end
 
   # GET /construction_payments/1
@@ -70,13 +69,9 @@ class ConstructionPaymentsController < ApplicationController
     def set_construction_payment
       @construction_payment = ConstructionPayment.find(params[:id])
     end
-    def payee_list
-      @payees= Payee.all
-      @projects= Project.all
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def construction_payment_params
-      params.require(:construction_payment).permit(:payee_id, :amount_paid, :payment_date, :payment_mode, :payemnt_category, :project_id, :payment_info)
+      params.require(:construction_payment).permit(:payee_id, :amount_paid, :payment_date, :payment_mode, :payemnt_category, :project_id, :payment_info, :intermediary, :payee_account)
     end
 end

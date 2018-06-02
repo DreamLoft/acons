@@ -10,7 +10,7 @@
       <th>Total Price</th>
       <th>Amount Paid</th>
       <th>Amount Pending</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -24,7 +24,6 @@
         <td><%= (office_deal.total_price - office_deal.apartment_payments.sum(:amount_paid)) %> </td>
         <td><%= link_to 'Show', office_deal %></td>
         <td><%= link_to 'Edit', edit_office_deal_path(office_deal) %></td>
-        <td><%= link_to 'Destroy', office_deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

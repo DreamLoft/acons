@@ -1,7 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Office Customers</h1>
-
+<hr>
+<div class="row">
+    <div class="col-lg-10">
+      <%=  bootstrap_form_tag  url: office_customers_path, method: :get do |f| %>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <input type="tel" name= "customer_value" placeholder= "Search by Name/Email/Phone/Broker/Source"  class="form-control"> 
+        <%= f.submit "Search" %>
+      </span>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<hr>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -16,7 +29,7 @@
       <th>Status</th>
       <th>Comments</th>
       <th>Source</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -35,8 +48,6 @@
         <td><%= office_customer.comments %></td>
         <td><%= office_customer.source %></td>
         <td><%= link_to 'Show', office_customer %></td>
-        <td><%= link_to 'Edit', edit_office_customer_path(office_customer) %></td>
-        <td><%= link_to 'Destroy', office_customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

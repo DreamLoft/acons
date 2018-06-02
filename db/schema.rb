@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401211439) do
+ActiveRecord::Schema.define(version: 20180602113718) do
 
   create_table "apartment_payments", force: :cascade do |t|
     t.integer "office_deal_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180401211439) do
     t.date "payment_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["office_deal_id"], name: "index_apartment_payments_on_office_deal_id"
   end
 
@@ -57,6 +58,8 @@ ActiveRecord::Schema.define(version: 20180401211439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "payee_id"
+    t.integer "intermediary"
+    t.string "payee_account"
     t.index ["payee_id"], name: "index_construction_payments_on_payee_id"
     t.index ["project_id"], name: "index_construction_payments_on_project_id"
   end
@@ -161,7 +164,6 @@ ActiveRecord::Schema.define(version: 20180401211439) do
   create_table "payees", force: :cascade do |t|
     t.integer "payee_category_id"
     t.string "payee_name"
-    t.string "payee_account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["payee_category_id"], name: "index_payees_on_payee_category_id"

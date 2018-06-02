@@ -75,6 +75,6 @@ class ApartmentPaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_payment_params
-      params.require(:apartment_payment).permit(:office_deal_id, :amount_paid, :payment_date)
+      params.require(:apartment_payment).permit(:office_deal_id, :amount_paid, :payment_date, :description)
     end
 end

@@ -74,6 +74,6 @@ class PayeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payee_params
-      params.require(:payee).permit(:payee_category_id, :payee_name, :payee_account)
+      params.require(:payee).permit(:payee_category_id, :payee_name)
     end
 end

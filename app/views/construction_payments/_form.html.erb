@@ -11,19 +11,18 @@
     </div>
   <% end %>
 
-  <% if !(@payees.present?)%>
   <div class="field">
-    <p>Create a payee first</p>
+    <%= form.label :payee_id %>
+    <%= form.select(:payee_id ,options_from_collection_for_select(Payee.all, :id, :payee_name), :include_blank => "Select Payee", skip_label: true) %>
   </div>
-  <% else %>
   <div class="field">
-    <%= form.select(:payee_id) do %>
-      <% @payees.each do |c| -%>
-          <%= content_tag(:option, c.payee_name.to_s + " - " + c.payee_category.category_name.to_s , value: c.id) %>
-      <% end %>
-    <% end %>
+    <%= form.label :intermediary %>
+    <%= form.select(:intermediary ,options_from_collection_for_select(Payee.all, :id, :payee_name), :include_blank => "Select Intermediary", skip_label: true) %>
   </div>
-  <% end %>
+  <div class="field">
+    <%= form.text_field :payee_account, id: :construction_payment_payee_account, class:'form-control' , required: true %>
+  </div>
+
 
   <div class="field">
     <%= form.number_field :amount_paid, id: :construction_payment_amount_paid, class:'form-control' , required: true  %>
@@ -40,20 +39,10 @@
   <div class="field">
     <%= form.text_field :payemnt_category, id: :construction_payment_payemnt_category, class:'form-control' , required: true %>
   </div>
-  
-  <% if !(@projects.present?)%>
-  <div class="field">
-    <p>Create a project first</p>
+    <div class="field">
+    <%= form.label :project_id %>
+    <%= form.select(:project_id ,options_from_collection_for_select(Project.all, :id, :project_name), :include_blank => "Select Project", skip_label: true) %>
   </div>
-  <% else %>
-  <div class="field">
-    <%= form.select(:project_id) do %>
-      <% @projects.each do |c| -%>
-          <%= content_tag(:option, c.project_name.to_s , value: c.id) %>
-      <% end %>
-    <% end %>
-  </div>
-  <% end %>
 
   <div class="field">
     <%= form.text_area :payment_info, id: :construction_payment_payment_info, class:'form-control' , required: true %>
