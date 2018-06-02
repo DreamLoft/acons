@@ -16,7 +16,7 @@
     <%= form.select(:payee_id ,options_from_collection_for_select(Payee.all, :id, :payee_name), :include_blank => "Select Payee", skip_label: true) %>
   </div>
   <div class="field">
-    <%= form.label :intermediary %>
+    <%= form.label :in_account_of %>
     <%= form.select(:intermediary ,options_from_collection_for_select(Payee.all, :id, :payee_name), :include_blank => "Select Intermediary", skip_label: true) %>
   </div>
   <div class="field">

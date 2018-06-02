@@ -8,7 +8,7 @@
   <%= @construction_payment.payee_account %>
 </p>
 <p>
-  <strong>Intermediary</strong>
+  <strong>in Account ofy</strong>
   <%= link_to Payee.find(@construction_payment.intermediary).try(:payee_name) , payee_path(@construction_payment.intermediary) %>
 </p>
 
