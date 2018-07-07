@@ -22,7 +22,6 @@
   <thead>
     <tr>
       <th>Payee name</th>
-      <th>Payee Account</th>
       <th>In Account of</th>
       <th>Amount paid</th>
       <th>Payment date</th>
@@ -37,15 +36,13 @@
     <% @construction_payments.each do |construction_payment| %>
       <tr>
         <td><%= link_to construction_payment.payee.payee_name , payee_path(construction_payment.payee) %></td>
-        <td><%= construction_payment.payee_account %></td>
         <td><%= link_to Payee.find(construction_payment.intermediary).try(:payee_name) , payee_path(construction_payment.intermediary) %></td>
         <td><%= construction_payment.amount_paid %></td>
         <td><%= construction_payment.payment_date %></td>
         <td><%= construction_payment.payment_mode %></td>
-        <td><%= construction_payment.payemnt_category %></td>
+        <td><%= PayeeCategory.find(construction_payment.payee_category_id).category_name %></td>
         <td><%= link_to construction_payment.project.project_name, project_path(construction_payment.project) %></td>
         <td><%= link_to 'Show', construction_payment %></td>
-        <td><%= link_to 'Edit', edit_construction_payment_path(construction_payment) %></td>
       </tr>
     <% end %>
   </tbody>

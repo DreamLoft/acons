@@ -23,7 +23,7 @@
         <td><%= office_deal.apartment_payments.sum(:amount_paid) %> </td>
         <td><%= (office_deal.total_price - office_deal.apartment_payments.sum(:amount_paid)) %> </td>
         <td><%= link_to 'Show', office_deal %></td>
-        <td><%= link_to 'Edit', edit_office_deal_path(office_deal) %></td>
+        <td><%= link_to 'Payments', office_deal_apartment_payments_path(office_deal) %></td>
       </tr>
     <% end %>
   </tbody>

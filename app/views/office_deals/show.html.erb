@@ -67,6 +67,5 @@
   <%= (@office_deal.total_price - @office_deal.apartment_payments.sum(:amount_paid)) %>
 </p>
 
-<%= link_to 'Edit', edit_office_deal_path(@office_deal) %> |
 <%= link_to 'Back', office_deals_path %> |
 <%= link_to 'Payments', office_deal_apartment_payments_path(@office_deal) %>

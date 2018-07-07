@@ -4,11 +4,7 @@
   <%= link_to @construction_payment.payee.payee_name , payee_path(@construction_payment.payee) %>
 </p>
 <p>
-  <strong>Payee Account:</strong>
-  <%= @construction_payment.payee_account %>
-</p>
-<p>
-  <strong>in Account ofy</strong>
+  <strong>in Account of:</strong>
   <%= link_to Payee.find(@construction_payment.intermediary).try(:payee_name) , payee_path(@construction_payment.intermediary) %>
 </p>
 
@@ -29,7 +25,7 @@
 
 <p>
   <strong>Payemnt category:</strong>
-  <%= @construction_payment.payemnt_category %>
+  <td><%= PayeeCategory.find(@construction_payment.payee_category_id).category_name %></td>
 </p>
 
 <p>
@@ -42,5 +38,4 @@
   <%= @construction_payment.payment_info %>
 </p>
 
-<%= link_to 'Edit', edit_construction_payment_path(@construction_payment) %> |
 <%= link_to 'Back', construction_payments_path %>

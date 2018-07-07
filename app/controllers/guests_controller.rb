@@ -5,13 +5,13 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
-    if params[:guest_name]
-      @guests= Guest.where("name LIKE (?)", '%' + params[:guest_name] + '%')
-    elsif params[:guest_mobile_number]
-      @guests= Guest.where(:mobile=> params[:guest_mobile_number] )
-    else
-      @guests = Guest.all
-    end
+    # if params[:guest_name]
+    #   @guests= Guest.where("name LIKE (?)", '%' + params[:guest_name] + '%')
+    # elsif params[:guest_mobile_number]
+    #   @guests= Guest.where(:mobile=> params[:guest_mobile_number] )
+    # else
+      @guests = Guest.all.search_by_name(params[:guest_value])
+    # end
   end
 
   # GET /guests/1

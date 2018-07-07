@@ -19,10 +19,6 @@
     <%= form.label :in_account_of %>
     <%= form.select(:intermediary ,options_from_collection_for_select(Payee.all, :id, :payee_name), :include_blank => "Select Intermediary", skip_label: true) %>
   </div>
-  <div class="field">
-    <%= form.text_field :payee_account, id: :construction_payment_payee_account, class:'form-control' , required: true %>
-  </div>
-
 
   <div class="field">
     <%= form.number_field :amount_paid, id: :construction_payment_amount_paid, class:'form-control' , required: true  %>
@@ -37,7 +33,8 @@
   </div>
 
   <div class="field">
-    <%= form.text_field :payemnt_category, id: :construction_payment_payemnt_category, class:'form-control' , required: true %>
+    <%= form.label :select_payment_category %>
+    <%= form.select(:payee_category_id,options_from_collection_for_select(PayeeCategory.all, :id, :category_name), :include_blank => "Select Category", skip_label: true ) %>
   </div>
     <div class="field">
     <%= form.label :project_id %>

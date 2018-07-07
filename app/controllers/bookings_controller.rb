@@ -6,11 +6,10 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     if (params[:start_date] or params[:end_date])
-      @bookings = Booking.where("booked_from BETWEEN  ? AND ? ", params[:start_date], params[:end_date])
-#      render json: @payments
+      @bookings = Booking.starting_from(params[:start_date]).ending_at(params[:end_date])
     else
-    @bookings = Booking.all
-    end
+      @bookings = Booking.current_bookings
+       end
   end
 
   # GET /bookings/1

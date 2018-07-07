@@ -31,7 +31,7 @@
                 <li><%= link_to 'Rooms', rooms_path %></li>
                 <li><%= link_to 'Coupons', coupons_path %></li>
                 <li><%= link_to 'Enquiry', guests_path %></li>
-                <li><%= link_to 'Stock', stocks_path %></li>
+                <li><%= link_to 'Stock', stock_items_path %></li>
                 <li><%= link_to 'Bookings', bookings_path %></li>
               <% elsif current_user.user_type == "office_staff" %>
                 <li class="active"><%= link_to 'Home', root_path %></li>
@@ -50,7 +50,7 @@
                   <li><%= link_to 'Rooms', rooms_path %></li>
                   <li><%= link_to 'Coupons', coupons_path %></li>
                   <li><%= link_to 'Enquiry', guests_path %></li>
-                  <li><%= link_to 'Stock', stocks_path %></li>
+                  <li><%= link_to 'Stock', stock_items_path %></li>
                   <li><%= link_to 'Bookings', bookings_path %></li>
                 </ul>
               </li>
