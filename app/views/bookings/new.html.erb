@@ -1,5 +1,7 @@
 <h1>New Booking</h1>
-
+<% guest = Guest.find(params[:enquiry]) %>
+<div><%= guest.name %> | <%= guest.email %> | <%= guest.mobile %> </div>
+<hr>
 <%= render 'form', booking: @booking %>
 
 <%= link_to 'Back', bookings_path %>

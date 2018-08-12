@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180707131521) do
+ActiveRecord::Schema.define(version: 20180812192102) do
 
   create_table "apartment_payments", force: :cascade do |t|
     t.integer "office_deal_id"
@@ -34,9 +34,6 @@ ActiveRecord::Schema.define(version: 20180707131521) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.string "customer_name"
-    t.string "customer_email"
-    t.string "customer_mobile"
     t.date "booking_date"
     t.integer "total_guests"
     t.string "booking_status"
@@ -46,6 +43,8 @@ ActiveRecord::Schema.define(version: 20180707131521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "paid_amount"
+    t.integer "guest_id"
+    t.index ["guest_id"], name: "index_bookings_on_guest_id"
   end
 
   create_table "construction_payments", force: :cascade do |t|
@@ -213,7 +212,6 @@ ActiveRecord::Schema.define(version: 20180707131521) do
   create_table "rooms", force: :cascade do |t|
     t.string "room_name"
     t.string "room_type"
-    t.string "room_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

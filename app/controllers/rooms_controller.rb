@@ -35,6 +35,6 @@ class RoomsController < ApplicationController
   end
   private
    def room_params
-     params.require(:room).permit(:room_name, :room_type, :room_status)
+     params.require(:room).permit(:room_name, :room_type)
    end
 end

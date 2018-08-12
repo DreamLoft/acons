@@ -8,6 +8,7 @@ class OfficeCustomersController < ApplicationController
     @office_customers = OfficeCustomer.all
     s_param = '%' + params[:customer_value] + '%' if params[:customer_value].present?
     @office_customers=@office_customers.where("name LIKE (?) OR email LIKE (?) OR phone LIKE (?) OR broker LIKE (?) OR source LIKE (?)", s_param, s_param, s_param, s_param, s_param ) if params[:customer_value].present?
+    @office_customers = @office_customers.where(status: "Ongoing") if params[:status].present?
   end
 
   # GET /office_customers/1

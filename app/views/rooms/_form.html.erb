@@ -1,6 +1,5 @@
   <%= bootstrap_form_for(@room) do |f| %>
     <%= f.text_field :room_name %>
     <%= f.select :room_type, ["Single","Double","Triple","Quad","Queen","King","Twin"], { label: "Select Room Type:" }, { class: "selectpicker" } %>
-        <%= f.select :room_status, ["Available","Cleaning","Booked","Under Maintance"], { label: "Select Room Status:" }, { class: "selectpicker" } %>
     <%= f.submit "Save" ,class: 'btn btn-primary'  %>
   <% end %>

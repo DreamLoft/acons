@@ -1,18 +1,19 @@
 
 <h3>Customer Info</h3>
+<% guest = Guest.find(@booking.guest_id) %>
 <p>
   <strong>Customer name:</strong>
-  <%= @booking.customer_name %>
+  <%= guest.name %>
 </p>
 
 <p>
   <strong>Customer email:</strong>
-  <%= @booking.customer_email %>
+  <%= guest.email %>
 </p>
 
 <p>
   <strong>Customer mobile:</strong>
-  <%= @booking.customer_mobile %>
+  <%= guest.mobile %>
 </p>
 <hr>
 <h3>Booking Info </h3>

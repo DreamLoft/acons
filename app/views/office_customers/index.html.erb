@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Office Customers</h1>
+<%= link_to 'New Office Customer', new_office_customer_path, class: 'btn btn-primary' %> |
+<%= link_to 'All Customers', office_customers_path %> |
+<%= link_to 'Ongoing Customers', office_customers_path(status: "ongoing") %>
 <hr>
 <div class="row">
     <div class="col-lg-10">
@@ -55,4 +57,3 @@
 
 <br>
 
-<%= link_to 'New Office Customer', new_office_customer_path, class: 'btn btn-primary' %>

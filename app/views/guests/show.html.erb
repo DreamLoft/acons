@@ -16,6 +16,7 @@
 </p>
 <hr>
 <h3>Bookings</h3>
+<% if @bookings.present? %>
 <ul>
   <% @bookings.each do |booking| %>
   <li>
@@ -43,6 +44,7 @@
   </li>
   <% end %>
 </ul>
+<% end %>
 <hr>
 <%= link_to 'Edit', edit_guest_path(@guest) %> |
 <%= link_to 'Back', guests_path %> |

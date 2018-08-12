@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
       @bookings = Booking.starting_from(params[:start_date]).ending_at(params[:end_date])
     else
       @bookings = Booking.current_bookings
-       end
+    end
   end
 
   # GET /bookings/1
@@ -24,21 +24,20 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @available_rooms= Room.where(room_status: "Available")
+    @available_rooms= Room.all
   end
 
   # GET /bookings/1/edit
   def edit
-    @available_rooms= Room.where(room_status: "Available")
+    @available_rooms= Room.all
   end
 
   # POST /bookings
   # POST /bookings.json
   def create
-  #    render json: params[:booking][:rooms]
     @booking = Booking.new(booking_params)
     respond_to do |format|
-      if @booking.save
+      if params[:booking][:rooms].present? && @booking.save
         rs= params[:booking][:rooms]
         rs.each do|room|
           @room_booking= RoomBooking.new
@@ -89,6 +88,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:customer_name, :customer_email, :customer_mobile, :booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount)
+      params.require(:booking).permit(:guest_id, :booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount)
     end
 end

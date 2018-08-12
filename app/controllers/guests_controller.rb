@@ -17,7 +17,7 @@ class GuestsController < ApplicationController
   # GET /guests/1
   # GET /guests/1.json
   def show
-    @bookings= Booking.where(:customer_mobile=> @guest.mobile)
+    @bookings= Booking.where(:guest_id=> @guest.id)
   end
 
   # GET /guests/new

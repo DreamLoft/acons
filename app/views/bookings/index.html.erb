@@ -1,16 +1,15 @@
 
-<%= link_to 'New Booking', new_booking_path, class: 'btn btn-primary' %>
 <hr>
 <div>
   <%=  bootstrap_form_tag  url: bookings_path, method: :get do |f| %>
   <div class="row">
     <div class="col-lg-5">
       Start Date : 
-      <%= f.date_field :start_date, value: Date.today, hide_label: true, class: 'form-control' %>
+      <%= f.date_field :start_date, value: params[:start_date], hide_label: true, class: 'form-control' %>
     </div>
     <div class="col-lg-5">
       End Date : 
-      <%= f.date_field :end_date, value: Date.today, class: 'form-control', hide_label: true %>
+      <%= f.date_field :end_date, value: [:end_date], class: 'form-control', hide_label: true %>
     </div>
     <div class="col-lg-2">
       <br>
@@ -44,7 +43,7 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.customer_name %></td>
+        <td><%= Guest.find(booking.guest_id).name %></td>
         <td><%= booking.booking_date %></td>
         <td><%= booking.total_guests %></td>
         <td><%= booking.booked_from %></td>
