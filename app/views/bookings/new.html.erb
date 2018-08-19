@@ -1,7 +1,35 @@
 <h1>New Booking</h1>
-<% guest = Guest.find(params[:enquiry]) %>
-<div><%= guest.name %> | <%= guest.email %> | <%= guest.mobile %> </div>
+<div><%= @guest.name %> | <%= @guest.email %> | <%= @guest.mobile %> </div>
 <hr>
-<%= render 'form', booking: @booking %>
+<%= bootstrap_form_tag url: guest_bookings_path do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
 
-<%= link_to 'Back', bookings_path %>
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.date_field :booking_date , leble: "Select Booking Date", :required => true %>
+  <%= f.text_field :total_guests ,type:"number" ,  label: "Total Guests" ,:required => true %>
+  <%= f.date_field :booked_from , leble: "Booked From (Expected Checkin Date) ", :required => true %>
+  <%= f.date_field :booked_till , leble: "Booked Till (Expected Checkout Date) ", :required => true %>
+  <%= f.text_field :booking_amount ,type:"number" ,  label: "Booking Amount" ,:required => true %>
+  <%= f.text_field :paid_amount ,type:"number" ,  label: "Paid Amount" ,:required => true %>
+  <%= f.select :booking_status, ["Confirmed","Expired"], { label: "Select booking Status:" }, { class: "selectpicker" } %>
+  <label>Select Rooms : <small> (Press and hold ctrl to select multiple room)</small></label>
+  <select name="booking[rooms][]" multiple=true class="form-control">
+    <%= Room.all.each do |room| %>
+      <option value="<%= room.id %>"><%= room.room_name %></option>
+    <% end %>
+  </select> <br/>
+
+  <%= f.submit "Save" ,class: 'btn btn-primary'  %>
+<% end %>
+
+
+<%= link_to 'Back', guest_path(@guest.id) %>

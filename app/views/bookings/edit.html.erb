@@ -1,7 +1,4 @@
 <h1>Editing Booking</h1>
-<% guest = Guest.find(@booking.guest_id) %>
-<div><%= guest.name %> | <%= guest.email %> | <%= guest.mobile %> </div>
-<hr>
 
 <%= render 'form', booking: @booking %>
 

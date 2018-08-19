@@ -53,8 +53,8 @@
         <td><%= booking.paid_amount %></td>
         <td><%= (booking.booking_amount + get_room_service_amount(booking.id)) - booking.paid_amount.to_i  %></td>
         <td><%= booking.booking_amount + get_room_service_amount(booking.id) %></td>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'Room Service', booking_room_services_path(booking.id) %></td>
+        <td><%= link_to 'Show', guest_booking_path(booking.guest_id, booking.id) %></td>
+        <td><%= link_to 'Room Service', guest_booking_room_services_path(booking.guest_id, booking.id) %></td>
 
       </tr>
     <% end %>

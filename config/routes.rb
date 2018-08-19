@@ -22,13 +22,15 @@ Rails.application.routes.draw do
   resources :rooms
   resources :coupons
 #  resources :logs
-  resources :bookings do
+  resources :guests do
+    resources :bookings, except: :index do
       resources :room_services
+    end
   end
+  get 'bookings' => 'bookings#index'
   resources :users, except: :create
   post 'create_user' => 'users#create', as: :create_user
 #  resources :payments
   resources :stocks, except: [:edit , :update]
   resources :stock_items
-  resources :guests
 end

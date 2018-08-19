@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_guest, except: [:index]
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
@@ -24,28 +25,31 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @available_rooms= Room.all
+    
   end
 
   # GET /bookings/1/edit
   def edit
-    @available_rooms= Room.all
+    
   end
 
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
+    @booking.assign_attributes(booking_params)
+    @booking.guest_id = @guest.id
+    debugger
     respond_to do |format|
-      if params[:booking][:rooms].present? && @booking.save
-        rs= params[:booking][:rooms]
+      if params[:rooms] && @booking.save
+        rs= params[:rooms]
         rs.each do|room|
           @room_booking= RoomBooking.new
           @room_booking.room_id= room
           @room_booking.booking_id= @booking.id
           @room_booking.save
         end
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to guest_path(@guest.id), notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -81,6 +85,9 @@ class BookingsController < ApplicationController
 
 
   private
+    def set_guest
+      @guest = Guest.find(params[:guest_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])
@@ -88,6 +95,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:guest_id, :booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount)
+      params.permit(:booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount, :booking_rooms)
     end
 end

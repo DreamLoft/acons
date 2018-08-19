@@ -107,9 +107,8 @@
 <hr>
 
 <hr>
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', bookings_path %> |
-<%= link_to 'Room Services', booking_room_services_path(@booking.id) %>
+<%= link_to 'Room Services', guest_booking_room_services_path(@guest.id,@booking.id), class: "btn btn-primary" %>
 <br>
 <br>
 <br>
