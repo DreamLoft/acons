@@ -39,10 +39,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.assign_attributes(booking_params)
     @booking.guest_id = @guest.id
-    debugger
     respond_to do |format|
-      if params[:rooms] && @booking.save
-        rs= params[:rooms]
+      if params[:booking][:rooms] && @booking.save
+        rs= params[:booking][:rooms]
         rs.each do|room|
           @room_booking= RoomBooking.new
           @room_booking.room_id= room
