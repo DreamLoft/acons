@@ -42,7 +42,7 @@ class RoomServicesController < ApplicationController
 #     render json: @room_service
     respond_to do |format|
       if @room_service.save
-        format.html { redirect_to booking_path(@booking.id), notice: 'Room service was successfully created.' }
+        format.html { redirect_to guest_booking_path(@booking.guest_id,@booking.id), notice: 'Room service was successfully created.' }
         format.json { render :show, status: :created, location: @room_service }
       else
         format.html { render :new }
