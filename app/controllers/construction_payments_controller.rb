@@ -58,6 +58,6 @@ class ConstructionPaymentsController < ApplicationController
     end
 
     def construction_payment_params
-      params.require(:construction_payment).permit(:payee_id, :amount_paid, :payment_date, :payment_mode, :payemnt_category, :project_id, :payment_info, :intermediary, :payee_account)
+      params.require(:construction_payment).permit(:payee_id, :amount_paid, :payment_date, :payment_mode, :payemnt_category, :project_id, :payment_info, :intermediary, :payee_category_id)
     end
 end
