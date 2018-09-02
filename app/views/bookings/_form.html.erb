@@ -1,6 +1,6 @@
 <div><%= @guest.name %> | <%= @guest.email %> | <%= @guest.mobile %> </div>
 <hr>
-<%= bootstrap_form_tag url: guest_bookings_path do |f| %>
+<%= bootstrap_form_for(@booking, as: :patch, url: guest_booking_path(@booking.guest_id, @booking.id) ) do |f| %>
   <% if @booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -13,17 +13,18 @@
     </div>
   <% end %>
 
-  <%= f.date_field :booking_date , leble: "Select Booking Date", :required => true %>
-  <%= f.text_field :total_guests ,type:"number" ,  label: "Total Guests" ,:required => true %>
-  <%= f.date_field :booked_from , leble: "Booked From (Expected Checkin Date) ", :required => true %>
-  <%= f.date_field :booked_till , leble: "Booked Till (Expected Checkout Date) ", :required => true %>
-  <%= f.text_field :booking_amount ,type:"number" ,  label: "Booking Amount" ,:required => true %>
-  <%= f.text_field :paid_amount ,type:"number" ,  label: "Paid Amount" ,:required => true %>
-  <%= f.select :booking_status, ["Confirmed","Expired"], { label: "Select booking Status:" }, { class: "selectpicker" } %>
+  <%= f.date_field :booking_date , leble: "Select Booking Date", :required => true, :value => @booking.booking_date %>
+  <%= f.text_field :total_guests ,type:"number" ,  label: "Total Guests" ,:required => true, :value => @booking.total_guests %>
+  <%= f.date_field :booked_from , leble: "Booked From (Expected Checkin Date) ", :required => true, :value => @booking.booked_from %>
+  <%= f.date_field :booked_till , leble: "Booked Till (Expected Checkout Date) ", :required => true, :value => @booking.booked_till %>
+  <%= f.text_field :booking_amount ,type:"number" ,  label: "Booking Amount" ,:required => true, :value => @booking.booking_amount %>
+  <%= f.text_field :paid_amount ,type:"number" ,  label: "Paid Amount" ,:required => true, :value => @booking.paid_amount %>
+  <%= f.select :booking_status, ["Confirmed","Expired"], { label: "Select booking Status:",selected: @booking.booking_status }, { class: "selectpicker" } %>
   <label>Select Rooms : <small>No Selection needed if you are editing a booking.</small></label>
+  <% booked_rooms =  @booking&.room_bookings&.pluck(:room_id) %>
   <select name="booking[rooms][]" multiple=true class="form-control">
     <%= Room.all.each do |room| %>
-      <option value="<%= room.id %>"><%= room.room_name %></option>
+      <option value="<%= room.id %>" <%= booked_rooms.include?(room.id) ? 'selected': nil %> > <%= room.room_name %> </option>
     <% end %>
   </select> <br/>
   <%= f.submit "Save" ,class: 'btn btn-primary'  %>

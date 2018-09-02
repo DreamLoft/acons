@@ -12,13 +12,13 @@
   <% end %>
 
 <div class="field">
-  <%= form.select(:office_customer_id ,options_from_collection_for_select(OfficeCustomer.all, :id, :name), :include_blank => "Select Item", skip_label: true) %>
+  <%= form.select(:office_customer_id ,options_from_collection_for_select(OfficeCustomer.all, :id, :name, @office_deal.office_customer_id), :include_blank => "Select Item", skip_label: true) %>
 </div>
 
 
 
   <div class="field">
-    <%= form.select(:apartment_id ,options_from_collection_for_select(Apartment.all, :id, :apartment_name), :include_blank => "Select Apartment", skip_label: true) %>  
+    <%= form.select(:apartment_id ,options_from_collection_for_select(Apartment.all, :id, :apartment_name, @office_deal.apartment_id), :include_blank => "Select Apartment", skip_label: true) %>  
   </div>
 
 

@@ -37,38 +37,49 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new
-    @booking.assign_attributes(booking_params)
-    @booking.guest_id = @guest.id
-    respond_to do |format|
-      if params[:booking][:rooms] && @booking.save
-        rs= params[:booking][:rooms]
-        rs.each do|room|
-          @room_booking= RoomBooking.new
-          @room_booking.room_id= room
-          @room_booking.booking_id= @booking.id
-          @room_booking.save
+    begin
+      Booking.transaction do
+        @booking.assign_attributes(booking_params)
+        @booking.guest_id = @guest.id
+        @booking.save!
+        if params[:booking][:rooms]
+          rs= params[:booking][:rooms]
+          rs.each do|room|
+            @room_booking= RoomBooking.new
+            @room_booking.room_id= room
+            @room_booking.booking_id= @booking.id
+            @room_booking.save!
+          end
+          redirect_to guest_booking_path(@booking.guest_id, @booking.id), notice: 'Booking was successfully updated.'
         end
-        format.html { redirect_to guest_path(@guest.id), notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
+    rescue Exception => e
+      redirect_to new_guest_booking(@booking.guest_id), notice: e.message
     end
-
   end
 
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+    begin
+      Booking.transaction do
+        @booking.assign_attributes(booking__patch_params)
+        @booking.guest_id = @guest.id
+        booked_rooms =  @booking&.room_bookings&.delete_all
+        @booking.save!
+        if params[:booking][:rooms]
+          rs= params[:booking][:rooms]
+          rs.each do|room|
+            @room_booking= RoomBooking.new
+            @room_booking.room_id= room
+            @room_booking.booking_id= @booking.id
+            @room_booking.save!
+          end
+          redirect_to guest_booking_path(@booking.guest_id, @booking.id), notice: 'Booking was successfully updated.'
+        end
       end
+    rescue Exception => e
+      redirect_to edit_guest_booking_path(@booking.guest_id, @booking.id), notice: e.message
     end
   end
 
@@ -95,5 +106,9 @@ class BookingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
       params.permit(:booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount, :booking_rooms)
+    end
+
+    def booking__patch_params
+      params.require("patch").permit(:booking_date, :total_guests, :booking_status, :booked_from, :booked_till, :booking_amount, :paid_amount, :booking_rooms)
     end
 end

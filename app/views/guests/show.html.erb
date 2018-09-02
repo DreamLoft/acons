@@ -33,6 +33,8 @@
         <td><%= booking.booked_till %></td>
         <td><%= booking.booking_amount %></td>
         <td><%= booking.paid_amount %></td>
+        <td><%= link_to 'Show', guest_booking_path(booking.guest_id, booking.id) %></td>
+        <td><%= link_to 'Edit', edit_guest_booking_path(booking.guest_id, booking.id) %></td>
         <td><%= link_to 'Room Service', guest_booking_room_services_path(booking.guest_id, booking.id) %></td>
       </tr>
       <% end %>
