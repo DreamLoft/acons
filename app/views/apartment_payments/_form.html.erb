@@ -13,13 +13,13 @@
 
 
   <div class="field">
-    <%= form.number_field :amount_paid, id: :apartment_payment_amount_paid, class:'form-control' %>
+    <%= form.number_field :amount_paid, id: :apartment_payment_amount_paid, value: @apartment_payment.amount_paid,  class:'form-control' %>
   </div>
   <div class="field">
-    <%= form.date_select :payment_date, id: :apartment_payment_payment_date, class:'form-control' %>
+    <%= form.date_select :payment_date, id: :apartment_payment_payment_date,value: @apartment_payment.payment_date, class:'form-control' %>
   </div>
   <div class="field">
-    <%= form.text_area :description, id: :apartment_payment_description, class:'form-control' %>
+    <%= form.text_area :description, id: :apartment_payment_description,value: @apartment_payment.description, class:'form-control' %>
   </div>
 
   <div class="actions">

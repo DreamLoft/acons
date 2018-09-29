@@ -1,6 +1,34 @@
 <h1>Editing Apartment Payment</h1>
 
-<%= render 'form', apartment_payment: @apartment_payment %>
+<%= bootstrap_form_for([@office_deal, @apartment_payment]) do |form| %>
+  <% if @apartment_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment_payment.errors.count, "error") %> prohibited this apartment_payment from being saved:</h2>
+
+      <ul>
+      <% @apartment_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.number_field :amount_paid, id: :apartment_payment_amount_paid, value: @apartment_payment.amount_paid,  class:'form-control' %>
+  </div>
+  <div class="field">
+    <%= form.date_select :payment_date, id: :apartment_payment_payment_date,value: @apartment_payment.payment_date, class:'form-control' %>
+  </div>
+  <div class="field">
+    <%= form.text_area :description, id: :apartment_payment_description,value: @apartment_payment.description, class:'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class:'btn btn-primary' %>
+  </div>
+<% end %>
+
 
 <%= link_to 'Show', office_deal_apartment_payment_path(@apartment_payment.office_deal,@apartment_payment) %> |
 <%= link_to 'Back', office_deal_apartment_payments_path %>

@@ -45,7 +45,7 @@ class ApartmentPaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @apartment_payment.update(apartment_payment_params)
-        format.html { redirect_to @apartment_payment, notice: 'Apartment payment was successfully updated.' }
+        format.html { redirect_to office_deal_apartment_payment_path(@office_deal,@apartment_payment), notice: 'Apartment payment was successfully updated.' }
         format.json { render :show, status: :ok, location: @apartment_payment }
       else
         format.html { render :edit }
@@ -69,6 +69,7 @@ class ApartmentPaymentsController < ApplicationController
     def set_apartment_payment
       @apartment_payment = ApartmentPayment.find(params[:id])
     end
+
     def set_office_deal
       @office_deal= OfficeDeal.find(params[:office_deal_id])
     end
