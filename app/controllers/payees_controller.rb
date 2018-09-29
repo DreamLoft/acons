@@ -6,7 +6,7 @@ class PayeesController < ApplicationController
   # GET /payees
   # GET /payees.json
   def index
-    @payees = Payee.all
+    @payees = Payee.all.page params[:page]
   end
 
   # GET /payees/1

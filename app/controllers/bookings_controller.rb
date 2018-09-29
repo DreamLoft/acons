@@ -7,9 +7,9 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     if (params[:start_date] or params[:end_date])
-      @bookings = Booking.starting_from(params[:start_date]).ending_at(params[:end_date])
+      @bookings = Booking.starting_from(params[:start_date]).ending_at(params[:end_date]).page params[:page]
     else
-      @bookings = Booking.current_bookings
+      @bookings = Booking.current_bookings.page params[:page]
     end
   end
 

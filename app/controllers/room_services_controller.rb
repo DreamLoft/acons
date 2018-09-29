@@ -5,7 +5,7 @@ class RoomServicesController < ApplicationController
   # GET /room_services
   # GET /room_services.json
   def index
-    @room_services = @booking.room_services
+    @room_services = @booking.room_services.page params[:page]
     #@room_services= RoomService.where(booking_id: @booking.id)
   end
 

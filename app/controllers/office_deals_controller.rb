@@ -5,7 +5,7 @@ class OfficeDealsController < ApplicationController
   # GET /office_deals
   # GET /office_deals.json
   def index
-    @office_deals = OfficeDeal.all
+    @office_deals = OfficeDeal.all.page params[:page]
   end
 
   # GET /office_deals/1

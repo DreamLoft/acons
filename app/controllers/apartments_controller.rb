@@ -7,7 +7,7 @@ class ApartmentsController < ApplicationController
   # GET /apartments.json
   def index
     #@apartments = Apartment.all
-    @apartments= @project.apartments
+    @apartments= @project.apartments.page params[:page]
   end
 
   # GET /apartments/1

@@ -5,7 +5,7 @@ class ConstructionStockFillingsController < ApplicationController
   # GET /construction_stock_fillings
   # GET /construction_stock_fillings.json
   def index
-    @construction_stock_fillings = ConstructionStockFilling.all
+    @construction_stock_fillings = ConstructionStockFilling.all.page params[:page]
   end
 
   # GET /construction_stock_fillings/1

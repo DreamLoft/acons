@@ -6,10 +6,10 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     if (params[:start_date] or params[:end_date])
-      @payments = Payment.where("payment_date BETWEEN  ? AND ? ", params[:start_date], params[:end_date])
+      @payments = Payment.where("payment_date BETWEEN  ? AND ? ", params[:start_date], params[:end_date]).page params[:page]
 #      render json: @payments
     else
-    @payments = Payment.all
+    @payments = Payment.all.page params[:page]
     end
 
     #

@@ -5,7 +5,7 @@ class ConstructionStockIssuesController < ApplicationController
   # GET /construction_stock_issues
   # GET /construction_stock_issues.json
   def index
-    @construction_stock_issues = ConstructionStockIssue.all
+    @construction_stock_issues = ConstructionStockIssue.all.page params[:page]
   end
 
   # GET /construction_stock_issues/1

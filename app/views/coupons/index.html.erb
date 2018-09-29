@@ -1,5 +1,6 @@
 
 <%= link_to 'Add New Coupon', new_coupon_path, class: 'btn btn-primary' %><br><br>
+<%= paginate @coupons %>
 <table class="table table-hover">
   <tr>
     <th>Coupon Code </th>

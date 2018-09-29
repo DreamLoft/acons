@@ -5,7 +5,7 @@ class PayeeCategoriesController < ApplicationController
   # GET /payee_categories
   # GET /payee_categories.json
   def index
-    @payee_categories = PayeeCategory.all
+    @payee_categories = PayeeCategory.all.page params[:page]
   end
 
   # GET /payee_categories/1

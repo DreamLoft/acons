@@ -1,5 +1,6 @@
 
 <%= link_to 'Add New Room', new_room_path, class: 'btn btn-primary' %><br><br>
+<%= paginate @rooms %>
 <table class="table table-hover">
   <tr>
     <th>Room Name </th>

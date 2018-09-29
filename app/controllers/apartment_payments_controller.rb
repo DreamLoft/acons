@@ -6,7 +6,7 @@ class ApartmentPaymentsController < ApplicationController
   # GET /apartment_payments
   # GET /apartment_payments.json
   def index
-    @apartment_payments = ApartmentPayment.where(:office_deal_id => @office_deal.id)
+    @apartment_payments = ApartmentPayment.where(:office_deal_id => @office_deal.id).page params[:page]
   end
 
   # GET /apartment_payments/1

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin
   def index
-    @users= User.all
+    @users= User.all.page params[:page]
   end
   def new
     @user = User.new

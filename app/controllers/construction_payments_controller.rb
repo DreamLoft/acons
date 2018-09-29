@@ -3,7 +3,7 @@ class ConstructionPaymentsController < ApplicationController
   before_action :set_construction_payment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @construction_payments = ConstructionPayment.search_by_project(params[:project_id]).search_by_payee(params[:payee_id]).search_by_intermediary(params[:intermediary_id])
+    @construction_payments = ConstructionPayment.search_by_project(params[:project_id]).search_by_payee(params[:payee_id]).search_by_intermediary(params[:intermediary_id]).page params[:page]
   end
 
 
